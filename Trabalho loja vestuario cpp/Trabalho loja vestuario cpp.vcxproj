@@ -118,6 +118,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="lde.cpp" />
+    <ClCompile Include="LDEProdutos.cpp" />
     <ClCompile Include="menuInicial.cpp" />
   </ItemGroup>
   <ItemGroup>

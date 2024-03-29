@@ -18,6 +18,12 @@
     <ClCompile Include="menuInicial.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="lde.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LDEProdutos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
