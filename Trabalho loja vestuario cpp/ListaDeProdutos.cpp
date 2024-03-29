@@ -23,12 +23,12 @@ private:
 	}
 
 	int editarEstoque(int codigo, int novoValor) {
-		if (novoValor < 0) {
-			return -2; //Nao autorizado
-		}
 		int index = this->procurarIndexPorCodigo(codigo);
 		if (index == -1) {
 			return -1; //Codigo nao achado
+		}
+		if (novoValor < 0) {
+			return -2; //Nao autorizado
 		}
 		produto NovoProduto = this->getItem(index);
 		NovoProduto.estoque = novoValor;
@@ -64,13 +64,30 @@ public:
 		this->push(novoProduto);
 	}
 	//Edit
-	int cosumirEstoque(int codigo, int quantidade) {
+	int consumirEstoque(int codigo, int quantidade) {
 		produto produto = this->procurarItemPorCodigo(codigo);
 		return this->editarEstoque(codigo, produto.estoque - quantidade);
 	}
+
 	int reporEstoque(int codigo, int quantidade) {
 		produto produto = this->procurarItemPorCodigo(codigo);
 		return this->editarEstoque(codigo, produto.estoque + quantidade);
+	}
+
+	int consumirListaEstoque(ListaProdutos produtos) {
+		ListaProdutos novaLista;
+		novaLista.copy(*this);
+		No<produto> *aux = produtos.getNo(0);
+		while (aux != nullptr) {
+			int consumo = novaLista.consumirEstoque(aux->info.codigo, aux->info.estoque);
+			if (consumo != 0) {
+				novaLista.deleteList();
+				return consumo;
+			}
+			aux = aux->eloF;
+		}
+		this->copy(novaLista);
+		return 0;
 	}
 	//Remove
 	int removerItem(int codigo) {
@@ -100,16 +117,21 @@ public:
 int main() {
 	produto produto1 = { "Calça azul", 2213, 20, 10 };
 	produto produto2 = { "Blusa Vermelha", 2200, 20, 10 };
-	produto produto3 = { "Sapato preto", 2103, 20, 10 };
+	produto produto3 = { "Blusa Vermelha", 2200, 20, 15 };
 	produto produto4 = { "Calça preta", 2003, 20, 10 };
 	ListaProdutos lista1;
+	ListaProdutos lista2;
 	lista1.adicionarProduto(produto1);
 	lista1.adicionarProduto(produto2);
 	lista1.adicionarProduto(produto2);
 	lista1.adicionarProduto(produto4);
 
+	lista2.adicionarProduto(produto1);
+	lista2.adicionarProduto(produto2);
+	lista2.adicionarProduto(produto2);
+	lista2.adicionarProduto(produto4);
 
-	lista1.cosumirEstoque(produto2.codigo, 2);
+	cout << lista1.consumirListaEstoque(lista2);
 
 	lista1.print();
 
