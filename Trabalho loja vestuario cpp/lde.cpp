@@ -15,6 +15,7 @@ class LDE
 	No<tipoItem>* comeco = nullptr;
 	No<tipoItem>* fim = nullptr;
 
+protected:
 	No<tipoItem>* getNo(int id) {
 		if (this->comeco == nullptr) {
 			return nullptr;
@@ -246,18 +247,3 @@ public:
 		cout << "] \n";
 	}
 };
-
-int main()
-{
-	LDE<int> lista;
-	lista.push(2);
-	lista.push(5);
-	lista.push(6);
-	lista.push(2);
-	lista.push(5);
-	lista.print();
-	system("pause");
-
-
-	return 0;
-}

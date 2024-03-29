@@ -1,0 +1,13 @@
+# Ignore Everything
+*
+
+# But not .cpp
+!*.cpp
+!*.h
+!Trabalho loja vestuario cpp.vcxproj
+!Trabalho loja vestuario cpp.vcxproj.filters
+!Trabalho loja vestuario cpp.vcxproj.user
+# Or directories
+!*/
+!.gitignore
+!README.md

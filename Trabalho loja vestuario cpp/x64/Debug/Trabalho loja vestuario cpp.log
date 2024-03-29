@@ -1,4 +1,0 @@
-﻿  lde.cpp
-  lde.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-LINK : warning LNK4067: ambiguous entry point; selected 'mainCRTStartup'
-  Trabalho loja vestuario cpp.vcxproj -> C:\Users\lucas\Documents\GitHub\Trabalho loja vestuario cpp\x64\Debug\Trabalho loja vestuario cpp.exe
