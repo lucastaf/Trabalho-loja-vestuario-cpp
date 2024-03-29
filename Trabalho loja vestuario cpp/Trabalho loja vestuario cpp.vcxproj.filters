@@ -27,6 +27,9 @@
     <ClCompile Include="lde.cpp">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
+    <ClCompile Include="ListaDeProdutos.cpp">
+      <Filter>Resource Files\Código</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">

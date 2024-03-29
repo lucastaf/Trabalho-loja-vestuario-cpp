@@ -121,6 +121,7 @@
     <ClCompile Include="lde.cpp" />
     <ClCompile Include="LDEProdutos.cpp" />
     <ClCompile Include="menuInicial.cpp" />
+    <ClCompile Include="ListaDeProdutos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
