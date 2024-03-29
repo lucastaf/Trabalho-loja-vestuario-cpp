@@ -135,7 +135,7 @@ public:
 
 	void append(LDE lista)
 	{
-		No<tipoItem>* aux = lista.getComeco();
+		No<tipoItem>* aux = lista.getNo(0);
 		while (aux != nullptr)
 		{
 			this->push(aux->info);
@@ -146,7 +146,7 @@ public:
 	void copy(LDE lista)
 	{
 		this->deleteList();
-		this->insert(lista);
+		this->append(lista);
 	}
 
 	//Delete
@@ -171,7 +171,7 @@ public:
 		No<tipoItem>* prox = this->comeco;
 		while (prox != nullptr)
 		{
-			No* deletedNo = prox;
+			No<tipoItem> *deletedNo = prox;
 			prox = prox->eloF;
 			delete deletedNo;
 		}
