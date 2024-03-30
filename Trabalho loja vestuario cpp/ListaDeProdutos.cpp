@@ -1,5 +1,14 @@
 #include "lde.cpp"
+#include <algorithm>
+#include <fstream>
+#include <string> 
 
+void readWord(ifstream& arquivo, int& out)
+{
+	string temp;
+	arquivo >> temp;
+	out = stoi(temp);
+}
 struct produto {
 	string nome;
 	int codigo;
@@ -35,7 +44,6 @@ private:
 		this->editItemById(index, NovoProduto);
 		return 0;
 	}
-
 public:
 	//Get
 	produto procurarItemPorCodigo(int codigo) {
@@ -50,6 +58,7 @@ public:
 		}
 		return sum;
 	}
+
 	//Add
 	void adicionarProduto(produto novoProduto) {
 		No<produto>* aux = this->getNo(0);
@@ -63,6 +72,7 @@ public:
 
 		this->push(novoProduto);
 	}
+
 	//Edit
 	int consumirEstoque(int codigo, int quantidade) {
 		produto produto = this->procurarItemPorCodigo(codigo);
@@ -74,7 +84,7 @@ public:
 		return this->editarEstoque(codigo, produto.estoque + quantidade);
 	}
 
-	int consumirListaEstoque(ListaProdutos produtos) {
+	int consumirListaProdutos(ListaProdutos produtos) {
 		ListaProdutos novaLista;
 		novaLista.copy(*this);
 		No<produto> *aux = produtos.getNo(0);
@@ -89,6 +99,7 @@ public:
 		this->copy(novaLista);
 		return 0;
 	}
+
 	//Remove
 	int removerItem(int codigo) {
 		int index = this->procurarIndexPorCodigo(codigo);
@@ -111,27 +122,61 @@ public:
 		cout << "] \n";
 	}
 
+	void writeFile() {
+		No<produto>* aux = this->getNo(0);
+		ofstream fileStream("Estoque.txt");
+		fileStream << "ListaDeProdutosStorage";
+		fileStream << this->getLength() << "\n";
+		while (aux != nullptr) {
+			produto novoProduto = aux->info;
+			replace(novoProduto.nome.begin(), novoProduto.nome.end(), ' ', '-');
+			fileStream << novoProduto.codigo << " " << novoProduto.nome << " " << novoProduto.preco << " " << novoProduto.estoque << "\n";
+			aux = aux->eloF;
+		}
+		fileStream.close();
+	}
+
+	int readFile() {
+		ListaProdutos NovaLista;
+		ifstream fileReader("Estoque.txt");
+		if (!fileReader) {
+			fileReader.close();
+			return -1;
+		}
+		string auxText;
+		fileReader >> auxText;
+		if (auxText != "ListaDeProdutosStorage") {
+			fileReader.close();
+			return -2;
+		}
+		int count;
+		readWord(fileReader, count);
+		
+		for (int i = 0; i < count; i++) {
+			produto novoProduto;
+			readWord(fileReader, novoProduto.codigo);
+			fileReader >> auxText;
+			replace(auxText.begin(), auxText.end(), '-', ' ');
+			novoProduto.nome = auxText;
+			readWord(fileReader, novoProduto.preco);
+			readWord(fileReader, novoProduto.estoque);
+
+			NovaLista.adicionarProduto(novoProduto);
+		}
+		this->copy(NovaLista);
+		NovaLista.deleteList();
+
+		return 0;
+	}
+
+
+
 };
 
-
 int main() {
-	produto produto1 = { "Calça azul", 2213, 20, 10 };
-	produto produto2 = { "Blusa Vermelha", 2200, 20, 10 };
-	produto produto3 = { "Blusa Vermelha", 2200, 20, 15 };
-	produto produto4 = { "Calça preta", 2003, 20, 10 };
 	ListaProdutos lista1;
-	ListaProdutos lista2;
-	lista1.adicionarProduto(produto1);
-	lista1.adicionarProduto(produto2);
-	lista1.adicionarProduto(produto2);
-	lista1.adicionarProduto(produto4);
 
-	lista2.adicionarProduto(produto1);
-	lista2.adicionarProduto(produto2);
-	lista2.adicionarProduto(produto2);
-	lista2.adicionarProduto(produto4);
-
-	cout << lista1.consumirListaEstoque(lista2);
+	cout << lista1.readFile();
 
 	lista1.print();
 
