@@ -1,4 +1,3 @@
-#pragma once
 #include "carrinho.h"
 
 namespace Global

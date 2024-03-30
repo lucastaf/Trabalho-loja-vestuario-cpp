@@ -2,7 +2,7 @@
 
 namespace core {
 	struct produto {
-		std::string nome;
+		string nome;
 		int codigo;
 		int preco;
 		int estoque;
@@ -11,9 +11,9 @@ namespace core {
 namespace core{
 	//Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
 	class ListaProdutos : protected LDE<produto> {
-		static void readWord(std::ifstream& arquivo, int& out)
+		static void readWord(ifstream& arquivo, int& out)
 		{
-			std::string temp;
+			string temp;
 			arquivo >> temp;
 			out = stoi(temp);
 		}
@@ -118,24 +118,24 @@ namespace core{
 
 		//Misc
 		void print() {
-			std::cout << '[';
+			cout << '[';
 			No<produto>* aux = this->getNo(0);
 			while (aux != nullptr)
 			{
-				std::cout << aux->info.nome << " " << aux->info.estoque << ",";
+				cout << aux->info.nome << " " << aux->info.estoque << ",";
 				aux = aux->eloF;
 			}
-			std::cout << "] \n";
+			cout << "] \n";
 		}
 
 		void writeFile() {
 			No<produto>* aux = this->getNo(0);
-			std::ofstream fileStream("Estoque.txt");
+			ofstream fileStream("Estoque.txt");
 			fileStream << "ListaDeProdutosStorage";
 			fileStream << this->getLength() << "\n";
 			while (aux != nullptr) {
 				produto novoProduto = aux->info;
-				std::replace(novoProduto.nome.begin(), novoProduto.nome.end(), ' ', '-');
+				replace(novoProduto.nome.begin(), novoProduto.nome.end(), ' ', '-');
 				fileStream << novoProduto.codigo << " " << novoProduto.nome << " " << novoProduto.preco << " " << novoProduto.estoque << "\n";
 				aux = aux->eloF;
 			}
@@ -144,12 +144,12 @@ namespace core{
 
 		int readFile() {
 			ListaProdutos NovaLista;
-			std::ifstream fileReader("Estoque.txt");
+			ifstream fileReader("Estoque.txt");
 			if (!fileReader) {
 				fileReader.close();
 				return -1;
 			}
-			std::string auxText;
+			string auxText;
 			fileReader >> auxText;
 			if (auxText != "ListaDeProdutosStorage") {
 				fileReader.close();

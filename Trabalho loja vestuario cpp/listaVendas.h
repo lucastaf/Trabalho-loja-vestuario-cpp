@@ -6,36 +6,36 @@ struct Venda {
 	int quantProdutos;
 	int valor;
 	float valorCobrado;
-	std::string formaDePagamento;
-	std::string vendedor;
+	string formaDePagamento;
+	string vendedor;
 
-	std::string formatarData() {
+	string formatarData() {
 		tm* time;
 		localtime_s(time, &this->horario);
-		std::string aux = std::to_string(time->tm_mday) + "/" + (std::to_string(time->tm_mon + 1)) + "/" + std::to_string(time->tm_year + 1900);
+		string aux = to_string(time->tm_mday) + "/" + (to_string(time->tm_mon + 1)) + "/" + to_string(time->tm_year + 1900);
 
 		return aux;
 	}
 };
 
 class ListaVendas :private LDE<Venda> {
-	static void readWord(std::ifstream& arquivo, int& out)
+	static void readWord(ifstream& arquivo, int& out)
 	{
-		std::string temp;
+		string temp;
 		arquivo >> temp;
 		out = stoi(temp);
 	}
 
-	static void readWordF(std::ifstream& arquivo, float& out)
+	static void readWordF(ifstream& arquivo, float& out)
 	{
-		std::string temp;
+		string temp;
 		arquivo >> temp;
 		out = stof(temp);
 	}
 
-	static void readWordT(std::ifstream& arquivo, time_t& out)
+	static void readWordT(ifstream& arquivo, time_t& out)
 	{
-		std::string temp;
+		string temp;
 		arquivo >> temp;
 		out = stol(temp);
 	}
@@ -68,13 +68,13 @@ public:
 
 	void writeFile() {
 		No<Venda>* aux = this->getNo(0);
-		std::ofstream fileStream("Vendas.txt");
+		ofstream fileStream("Vendas.txt");
 		fileStream << "ListaDeVendasStorage ";
 		fileStream << this->getLength() << "\n";
 		while (aux != nullptr) {
 			Venda novaVenda = aux->info;
-			std::replace(novaVenda.formaDePagamento.begin(), novaVenda.formaDePagamento.end(), ' ', '-');
-			std::replace(novaVenda.vendedor.begin(), novaVenda.vendedor.end(), ' ', '-');
+			replace(novaVenda.formaDePagamento.begin(), novaVenda.formaDePagamento.end(), ' ', '-');
+			replace(novaVenda.vendedor.begin(), novaVenda.vendedor.end(), ' ', '-');
 			fileStream << novaVenda.horario << " " << novaVenda.quantProdutos << " " << novaVenda.valor << " " << novaVenda.valorCobrado << " " << novaVenda.formaDePagamento << " " << novaVenda.vendedor << "\n";
 			aux = aux->eloF;
 		}
@@ -83,12 +83,12 @@ public:
 
 	int readFile() {
 		ListaVendas NovaLista;
-		std::ifstream fileReader("Vendas.txt");
+		ifstream fileReader("Vendas.txt");
 		if (!fileReader) {
 			fileReader.close();
 			return -1;
 		}
-		std::string auxText;
+		string auxText;
 		fileReader >> auxText;
 		if (auxText != "ListaDeVendasStorage") {
 			fileReader.close();
@@ -97,8 +97,8 @@ public:
 		int count;
 
 		readWord(fileReader, count);
-		std::string vendedor;
-		std::string formaPagamento;
+		string vendedor;
+		string formaPagamento;
 		for (int i = 0; i < count; i++) {
 			Venda novaVenda;
 			readWordT(fileReader, novaVenda.horario);
@@ -106,10 +106,10 @@ public:
 			readWord(fileReader, novaVenda.valor);
 			readWordF(fileReader, novaVenda.valorCobrado);
 			fileReader >> formaPagamento;
-			std::replace(formaPagamento.begin(), formaPagamento.end(), '-', ' ');
+			replace(formaPagamento.begin(), formaPagamento.end(), '-', ' ');
 			novaVenda.formaDePagamento = formaPagamento;
 			fileReader >> vendedor;
-			std::replace(vendedor.begin(), vendedor.end(), '-', ' ');
+			replace(vendedor.begin(), vendedor.end(), '-', ' ');
 			novaVenda.vendedor = vendedor;
 
 			NovaLista.addVenda(novaVenda);
@@ -121,14 +121,14 @@ public:
 	}
 
 	void print() {
-		std::cout << '[';
+		cout << '[';
 		No<Venda>* aux = this->getNo(0);
 		while (aux != nullptr)
 		{
-			std::cout << aux->info.valor << " " << aux->info.formaDePagamento << " " << aux->info.vendedor << ",";
+			cout << aux->info.valor << " " << aux->info.formaDePagamento << " " << aux->info.vendedor << ",";
 			aux = aux->eloF;
 		}
-		std::cout << "] \n";
+		cout << "] \n";
 	}
 };
 }

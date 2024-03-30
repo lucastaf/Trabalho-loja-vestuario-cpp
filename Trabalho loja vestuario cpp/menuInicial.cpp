@@ -8,7 +8,7 @@
 	int main() {
 		core::ListaVendas novaLista;
 		Global::vendas = novaLista;
-		std::cout << &Global::vendas << "\n";
+		std::cout << &Global::vendas;
 		Global::vendas.readFile();
 		Application::EnableVisualStyles();
 		Application::SetCompatibleTextRenderingDefault(false);
