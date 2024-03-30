@@ -7,8 +7,6 @@
 #include <string> 
 
 namespace core {
-	using namespace std;
-
 	template <class tipoInfo>
 	struct No
 	{
@@ -245,14 +243,14 @@ namespace core {
 		//Misc
 		void print()
 		{
-			cout << '[';
+			std::cout << '[';
 			No<tipoItem>* aux = this->comeco;
 			while (aux != nullptr)
 			{
-				cout << aux->info << ",";
+				std::cout << aux->info << ",";
 				aux = aux->eloF;
 			}
-			cout << "] \n";
+			std::cout << "] \n";
 		}
 	};
 }
