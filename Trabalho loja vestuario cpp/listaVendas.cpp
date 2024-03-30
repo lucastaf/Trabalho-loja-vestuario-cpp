@@ -1,31 +1,4 @@
-#include "lde.cpp"
-#include <ctime>
-#include <sstream>
-#include <iomanip>
-#include <string>
-#include <algorithm>
-#include <fstream>
-
-
-void readWordI(ifstream& arquivo, int& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stoi(temp);
-}
-void readWordF(ifstream& arquivo, float& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stof(temp);
-}
-void readWordT(ifstream& arquivo, time_t& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stol(temp);
-}
-
+#include "listaDeProdutos.cpp"
 
 struct Venda {
 	time_t horario;
@@ -34,14 +7,6 @@ struct Venda {
 	float valorCobrado;
 	string formaDePagamento;
 	string vendedor;
-
-	void printVendas() {
-		cout << "Quantidade de produtos: " << quantProdutos << endl;
-		cout << "Valor: " << valor << endl;
-		cout << "Valor cobrado: " << valorCobrado << endl;
-		cout << "Forma de pagamento: " << formaDePagamento << endl;
-		cout << "Vendedor: " << vendedor << endl;
-	}
 
 	string formatarData() {
 		tm* time;
@@ -52,8 +17,28 @@ struct Venda {
 	}
 };
 
-
 class ListaVendas :private LDE<Venda> {
+	static void readWord(ifstream& arquivo, int& out)
+	{
+		string temp;
+		arquivo >> temp;
+		out = stoi(temp);
+	}
+
+	static void readWordF(ifstream& arquivo, float& out)
+	{
+		string temp;
+		arquivo >> temp;
+		out = stof(temp);
+	}
+
+	static void readWordT(ifstream& arquivo, time_t& out)
+	{
+		string temp;
+		arquivo >> temp;
+		out = stol(temp);
+	}
+
 
 public:
 	void addVenda(Venda novaVenda) {
@@ -110,14 +95,14 @@ public:
 		}
 		int count;
 
-		readWordI(fileReader, count);
+		readWord(fileReader, count);
 		string vendedor;
 		string formaPagamento;
 		for (int i = 0; i < count; i++) {
 			Venda novaVenda;
 			readWordT(fileReader, novaVenda.horario);
-			readWordI(fileReader, novaVenda.quantProdutos);
-			readWordI(fileReader, novaVenda.valor);
+			readWord(fileReader, novaVenda.quantProdutos);
+			readWord(fileReader, novaVenda.valor);
 			readWordF(fileReader, novaVenda.valorCobrado);
 			fileReader >> formaPagamento;
 			replace(formaPagamento.begin(), formaPagamento.end(), '-', ' ');
@@ -139,28 +124,9 @@ public:
 		No<Venda>* aux = this->getNo(0);
 		while (aux != nullptr)
 		{
-			cout << aux->info.valor << " " << aux->info.formaDePagamento<< " " << aux->info.vendedor<<"," ;
+			cout << aux->info.valor << " " << aux->info.formaDePagamento << " " << aux->info.vendedor << ",";
 			aux = aux->eloF;
 		}
 		cout << "] \n";
 	}
 };
-
-int main() {
-
-	Venda venda1 = { time(NULL), 10, 150, 30, "pix", "joana" };
-	Venda venda2 = { time(NULL), 15, 150, 40, "cartao de credito", "jailson" };
-	Venda venda3 = { time(NULL), 13, 150, 60, "debito", "rubivaldo silva" };
-
-	ListaVendas lista1;
-
-	//lista1.addVenda(venda1); 
-	//lista1.addVenda(venda2);
-	//lista1.addVenda(venda3);
-
-	lista1.readFile();
-	lista1.print();
-
-	system("pause");
-	return 0;
-}

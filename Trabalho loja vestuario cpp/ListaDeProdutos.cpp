@@ -1,16 +1,4 @@
 #include "lde.cpp"
-#include <algorithm>
-#include <fstream>
-#include <string> 
-
-void readWord(ifstream& arquivo, int& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stoi(temp);
-}
- 
-
 
 struct produto {
 	string nome;
@@ -20,9 +8,14 @@ struct produto {
 };
 
 
-
 //Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
 class ListaProdutos : protected LDE<produto> {
+	static void readWord(ifstream& arquivo, int& out)
+	{
+		string temp;
+		arquivo >> temp;
+		out = stoi(temp);
+	}
 protected:
 	int procurarIndexPorCodigo(int codigo) {
 		for (int i = 0; i < this->getLength(); i++) {

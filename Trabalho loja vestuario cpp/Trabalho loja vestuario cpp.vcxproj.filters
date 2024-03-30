@@ -21,9 +21,6 @@
     <ClCompile Include="menuInicial.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="LDEProdutos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="lde.cpp">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
@@ -31,6 +28,9 @@
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
     <ClCompile Include="listaVendas.cpp">
+      <Filter>Resource Files\Código</Filter>
+    </ClCompile>
+    <ClCompile Include="Carrinho.cpp">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
   </ItemGroup>

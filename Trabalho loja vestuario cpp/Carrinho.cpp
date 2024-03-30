@@ -1,4 +1,3 @@
-#include "ListaDeProdutos.cpp"
 #include "listaVendas.cpp"
 
 class Carrinho : public ListaProdutos{
