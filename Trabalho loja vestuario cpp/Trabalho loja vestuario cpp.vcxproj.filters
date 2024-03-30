@@ -33,10 +33,28 @@
     <ClCompile Include="Carrinho.cpp">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
+    <ClCompile Include="editarCarrinho.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="editarEstoque.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editarEstoque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="editarCarrinho.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
