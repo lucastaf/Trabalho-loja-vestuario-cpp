@@ -9,6 +9,9 @@ void readWord(ifstream& arquivo, int& out)
 	arquivo >> temp;
 	out = stoi(temp);
 }
+ 
+
+
 struct produto {
 	string nome;
 	int codigo;
@@ -19,8 +22,8 @@ struct produto {
 
 
 //Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
-class ListaProdutos : private LDE<produto> {
-private:
+class ListaProdutos : protected LDE<produto> {
+protected:
 	int procurarIndexPorCodigo(int codigo) {
 		for (int i = 0; i < this->getLength(); i++) {
 			produto aux = this->getItem(i);
@@ -57,6 +60,15 @@ public:
 			sum += produto.preco * produto.estoque;
 		}
 		return sum;
+	}
+	int calcularEstoque() {
+		No <produto>* aux = this->getNo(0);
+		int count = 0;
+		while (aux != nullptr) {
+			count += aux->info.estoque;
+			aux = aux->eloF;
+		}
+		return count;
 	}
 
 	//Add
@@ -172,15 +184,3 @@ public:
 
 
 };
-
-int main() {
-	ListaProdutos lista1;
-
-	cout << lista1.readFile();
-
-	lista1.print();
-
-
-	system("pause");
-	return 0;
-}
