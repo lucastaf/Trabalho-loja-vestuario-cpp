@@ -42,7 +42,7 @@ namespace Trabalholojavestuariocpp {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -77,7 +77,11 @@ namespace Trabalholojavestuariocpp {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		std::cout << &Global::vendas << "\n";
+		core::No<core::Venda>* aux = Global::vendas.getComeco();
+		while (aux != nullptr) {
+			std::cout << aux->info.vendedor << "\n";
+			aux = aux->eloF;
+		}
 	}
 	};
 }

@@ -42,6 +42,10 @@ class ListaVendas :private LDE<Venda> {
 
 
 public:
+	No <Venda>* getComeco() {
+		return this->getNo(0);
+	}
+
 	void addVenda(Venda novaVenda) {
 		this->push(novaVenda);
 	}
