@@ -118,8 +118,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Carrinho.cpp" />
     <ClCompile Include="lde.cpp" />
-    <ClCompile Include="LDEProdutos.cpp" />
     <ClCompile Include="listaVendas.cpp" />
     <ClCompile Include="menuInicial.cpp" />
     <ClCompile Include="ListaDeProdutos.cpp" />
