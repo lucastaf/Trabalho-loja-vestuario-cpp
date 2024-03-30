@@ -83,7 +83,7 @@ public:
 	void writeFile() {
 		No<Venda>* aux = this->getNo(0);
 		ofstream fileStream("Vendas.txt");
-		fileStream << "ListaDeVendasStorage";
+		fileStream << "ListaDeVendasStorage ";
 		fileStream << this->getLength() << "\n";
 		while (aux != nullptr) {
 			Venda novaVenda = aux->info;
@@ -133,21 +133,34 @@ public:
 
 		return 0;
 	}
+
+	void print() {
+		cout << '[';
+		No<Venda>* aux = this->getNo(0);
+		while (aux != nullptr)
+		{
+			cout << aux->info.valor << " " << aux->info.formaDePagamento<< " " << aux->info.vendedor<<"," ;
+			aux = aux->eloF;
+		}
+		cout << "] \n";
+	}
 };
 
 int main() {
 
 	Venda venda1 = { time(NULL), 10, 150, 30, "pix", "joana" };
-	Venda venda2 = { time(NULL), 15, 150, 40, "credito", "jailson" };
-	Venda venda3 = { time(NULL), 13, 150, 60, "debito", "rubivaldo" };
+	Venda venda2 = { time(NULL), 15, 150, 40, "cartao de credito", "jailson" };
+	Venda venda3 = { time(NULL), 13, 150, 60, "debito", "rubivaldo silva" };
 
 	ListaVendas lista1;
 
-	lista1.addVenda(venda1);
-	lista1.addVenda(venda2);
-	lista1.addVenda(venda3);
+	//lista1.addVenda(venda1); 
+	//lista1.addVenda(venda2);
+	//lista1.addVenda(venda3);
 
-	lista1.writeFile();
+	lista1.readFile();
+	lista1.print();
 
+	system("pause");
 	return 0;
 }
