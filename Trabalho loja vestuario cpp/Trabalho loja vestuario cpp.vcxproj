@@ -78,6 +78,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
@@ -118,20 +119,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Carrinho.cpp" />
-    <ClCompile Include="lde.cpp" />
-    <ClCompile Include="listaVendas.cpp" />
+    <ClCompile Include="Carrinho.h" />
+    <ClCompile Include="global.h" />
+    <ClCompile Include="lde.h" />
+    <ClCompile Include="listaVendas.h" />
     <ClCompile Include="menuInicial.cpp" />
-    <ClCompile Include="ListaDeProdutos.cpp" />
+    <ClCompile Include="ListaDeProdutos.h" />
+    <ClCompile Include="telaVendas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="telaVendas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="menuInicial.resx">
       <DependentUpon>menuInicial.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="telaVendas.resx">
+      <DependentUpon>telaVendas.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

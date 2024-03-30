@@ -1,20 +1,18 @@
 #include "menuInicial.h"
-#include "Carrinho.cpp"
+#include "global.h"
 
-using namespace System;
-using namespace System::Windows::Forms;
 
-namespace Global {
-    ListaProdutos estoque;
-    Carrinho carrinho;
-    ListaVendas vendas;
-}
+	using namespace System;
+	using namespace System::Windows::Forms;
 
-int main() {
-    Global::estoque.readFile();
-    Global::vendas.readFile();
-    Application::EnableVisualStyles();
-    Application::SetCompatibleTextRenderingDefault(false);
-    Trabalholojavestuariocpp::menuInicial frm;
-    Application::Run(% frm);
-}
+	int main() {
+		core::ListaVendas novaLista;
+		Global::vendas = novaLista;
+		std::cout << &Global::vendas << "\n";
+		Global::vendas.readFile();
+		Application::EnableVisualStyles();
+		Application::SetCompatibleTextRenderingDefault(false);
+		Trabalholojavestuariocpp::menuInicial frm;
+		Application::Run(% frm);
+		return 0;
+	}
