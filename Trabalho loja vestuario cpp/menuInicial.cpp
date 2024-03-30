@@ -5,9 +5,9 @@ using namespace System;
 using namespace System::Windows::Forms;
 
 namespace Global {
-    ListaProdutos estoque;
-    Carrinho carrinho;
-    ListaVendas vendas;
+    core::ListaProdutos estoque;
+    core::Carrinho carrinho;
+    core::ListaVendas vendas;
 }
 
 int main() {

@@ -1,12 +1,12 @@
 #include "lde.cpp"
 
+namespace core {
 struct produto {
 	string nome;
 	int codigo;
 	int preco;
 	int estoque;
 };
-
 
 //Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
 class ListaProdutos : protected LDE<produto> {
@@ -175,3 +175,4 @@ public:
 	}
 
 };
+}

@@ -1,5 +1,6 @@
 #include "listaDeProdutos.cpp"
 
+namespace core {
 struct Venda {
 	time_t horario;
 	int quantProdutos;
@@ -130,3 +131,4 @@ public:
 		cout << "] \n";
 	}
 };
+}
