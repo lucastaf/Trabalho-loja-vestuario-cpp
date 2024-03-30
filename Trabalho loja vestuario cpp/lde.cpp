@@ -7,10 +7,6 @@
 #include <string> 
 
 using namespace std;
-
-
-
-
 template <class tipoInfo>
 struct No
 {

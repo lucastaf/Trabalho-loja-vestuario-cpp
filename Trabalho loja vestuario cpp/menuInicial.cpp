@@ -1,8 +1,18 @@
 #include "menuInicial.h"
+#include "Carrinho.cpp"
+
 using namespace System;
 using namespace System::Windows::Forms;
-[STAThreadAttribute]
-int main(array<String^>^ args) {
+
+namespace Global {
+    ListaProdutos estoque;
+    Carrinho carrinho;
+    ListaVendas vendas;
+}
+
+int main() {
+    Global::estoque.readFile();
+    Global::vendas.readFile();
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     Trabalholojavestuariocpp::menuInicial frm;
