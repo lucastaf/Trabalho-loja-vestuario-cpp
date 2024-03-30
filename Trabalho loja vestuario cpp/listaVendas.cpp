@@ -2,7 +2,29 @@
 #include <ctime>
 #include <sstream>
 #include <iomanip>
+#include <string>
+#include <algorithm>
+#include <fstream>
 
+
+void readWordI(ifstream& arquivo, int& out)
+{
+	string temp;
+	arquivo >> temp;
+	out = stoi(temp);
+}
+void readWordF(ifstream& arquivo, float& out)
+{
+	string temp;
+	arquivo >> temp;
+	out = stof(temp);
+}
+void readWordT(ifstream& arquivo, time_t& out)
+{
+	string temp;
+	arquivo >> temp;
+	out = stol(temp);
+}
 
 
 struct Venda {
@@ -22,7 +44,8 @@ struct Venda {
 	}
 
 	string formatarData() {
-		tm* time = localtime(&this->horario);
+		tm* time;
+		localtime_s(time, &this->horario);
 		string aux = to_string(time->tm_mday) + "/" + (to_string(time->tm_mon + 1)) + "/" + to_string(time->tm_year + 1900);
 
 		return aux;
@@ -30,7 +53,7 @@ struct Venda {
 };
 
 
-class ListaVendas:private LDE<Venda> {
+class ListaVendas :private LDE<Venda> {
 
 public:
 	void addVenda(Venda novaVenda) {
@@ -38,7 +61,7 @@ public:
 	}
 
 	int calcularValorTotal() {
-		No <Venda> *aux = this->getNo(0);
+		No <Venda>* aux = this->getNo(0);
 		int total = 0;
 		while (aux != nullptr) {
 			total += aux->info.valor;
@@ -66,7 +89,7 @@ public:
 			Venda novaVenda = aux->info;
 			replace(novaVenda.formaDePagamento.begin(), novaVenda.formaDePagamento.end(), ' ', '-');
 			replace(novaVenda.vendedor.begin(), novaVenda.vendedor.end(), ' ', '-');
-			fileStream << novaVenda.horario << " " << novaVenda.quantProdutos << " " << novaVenda.valor << " " << novaVenda.valorCobrado << " " << novaVenda.formaDePagamento<< " " << novaVenda.vendedor<<"\n";
+			fileStream << novaVenda.horario << " " << novaVenda.quantProdutos << " " << novaVenda.valor << " " << novaVenda.valorCobrado << " " << novaVenda.formaDePagamento << " " << novaVenda.vendedor << "\n";
 			aux = aux->eloF;
 		}
 		fileStream.close();
@@ -86,16 +109,16 @@ public:
 			return -2;
 		}
 		int count;
-		
-		readWord(fileReader, count);
+
+		readWordI(fileReader, count);
 		string vendedor;
 		string formaPagamento;
 		for (int i = 0; i < count; i++) {
 			Venda novaVenda;
-			readWord(fileReader, novaVenda.horario);
-			readWord(fileReader, novaVenda.quantProdutos);
-			readWord(fileReader, novaVenda.valor);
-			readWord(fileReader, novaVenda.valorCobrado);
+			readWordT(fileReader, novaVenda.horario);
+			readWordI(fileReader, novaVenda.quantProdutos);
+			readWordI(fileReader, novaVenda.valor);
+			readWordF(fileReader, novaVenda.valorCobrado);
 			fileReader >> formaPagamento;
 			replace(formaPagamento.begin(), formaPagamento.end(), '-', ' ');
 			novaVenda.formaDePagamento = formaPagamento;

@@ -1,28 +1,9 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <fstream>
+
 using namespace std;
 
 
-void readWord(ifstream& arquivo, int& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stoi(temp);
-}
-void readWord(ifstream& arquivo, float& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stof(temp);
-}
-void readWord(ifstream& arquivo, time_t& out)
-{
-	string temp;
-	arquivo >> temp;
-	out = stol(temp);
-}
+
 
 
 
