@@ -123,15 +123,22 @@
     <ClCompile Include="listaVendas.cpp" />
     <ClCompile Include="menuInicial.cpp" />
     <ClCompile Include="ListaDeProdutos.cpp" />
+    <ClCompile Include="telaVendas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="telaVendas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="menuInicial.resx">
       <DependentUpon>menuInicial.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="telaVendas.resx">
+      <DependentUpon>telaVendas.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

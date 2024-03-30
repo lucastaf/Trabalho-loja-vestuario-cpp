@@ -16,6 +16,9 @@
     <Filter Include="Resource Files\Código">
       <UniqueIdentifier>{ef901262-628b-4184-942a-19b24ac600e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Telas">
+      <UniqueIdentifier>{107de978-75f2-43b8-8a3e-19a7f0fe0168}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="menuInicial.cpp">
@@ -33,10 +36,16 @@
     <ClCompile Include="Carrinho.cpp">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
+    <ClCompile Include="telaVendas.cpp">
+      <Filter>Resource Files\Telas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="telaVendas.h">
+      <Filter>Resource Files\Telas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
