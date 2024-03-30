@@ -140,23 +140,39 @@ namespace Trabalholojavestuariocpp {
 			this->Controls->Add(this->button1);
 			this->Name = L"telaVendas";
 			this->Text = L"telaVendas";
+			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->EndInit();
 			this->ResumeLayout(false);
 
-			core::No<core::Venda>* aux = Global::vendas.getComeco();
-			for (; aux != nullptr; aux = aux->eloF) {
-				core::Venda novaVenda = aux->info;
-				System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + "," + novaVenda.valor + "," + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
-				array<System::String^>^ dataArray = dataString->Split(',');
-				this->dataGrid_Vendas->Rows->Add(dataArray);
-				std::cout << aux->info.vendedor << "\n";
-
-			};
-
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void telaVendas_Load(System::Object^ sender, System::EventArgs^ e) {
+		core::No<core::Venda>* aux = Global::vendas.getComeco();
+		for (; aux != nullptr; aux = aux->eloF) {
+			core::Venda novaVenda = aux->info;
+			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + ", R$" + novaVenda.valor + ", R$" + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
+			array<System::String^>^ dataArray = dataString->Split(',');
+			this->dataGrid_Vendas->Rows->Add(dataArray);
 
-	};
-	};
+		};
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	// Get the first selected row
+	if (this->dataGrid_Vendas->SelectedRows->Count <= 0)
+	{
+		// Safe to access the first selected row
+		return;
+		// Your code to work with selectedRow
+	}
+
+	DataGridViewRow^ selectedRow = this->dataGrid_Vendas->SelectedRows[0];
+
+	// Now you can access the data in the selected row
+	// For example, to get the value of the first cell in the selected row
+	String^ cellValue = selectedRow->Cells[0]->Value->ToString();
+
+	// Output the value to the console
+	Console::WriteLine("Selected row value: " + cellValue);
+}
+};
 }
