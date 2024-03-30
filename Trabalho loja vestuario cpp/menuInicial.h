@@ -1,4 +1,5 @@
 #pragma once
+#include "telaVendas.h"
 
 namespace Trabalholojavestuariocpp {
 
@@ -108,6 +109,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_relatorio->TabIndex = 3;
 			this->btn_relatorio->Text = L"Relatório";
 			this->btn_relatorio->UseVisualStyleBackColor = true;
+			this->btn_relatorio->Click += gcnew System::EventHandler(this, &menuInicial::btn_relatorio_Click);
 			// 
 			// menuInicial
 			// 
@@ -125,5 +127,9 @@ namespace Trabalholojavestuariocpp {
 
 		}
 #pragma endregion
-	};
+	private: System::Void btn_relatorio_Click(System::Object^ sender, System::EventArgs^ e) {
+		telaVendas^ novaTela = gcnew telaVendas();
+		novaTela->ShowDialog();
+	}
+};
 }
