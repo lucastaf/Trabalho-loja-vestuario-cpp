@@ -169,18 +169,4 @@ public:
 		return 0;
 	}
 
-
-
 };
-
-int main() {
-	ListaProdutos lista1;
-
-	cout << lista1.readFile();
-
-	lista1.print();
-
-
-	system("pause");
-	return 0;
-}
