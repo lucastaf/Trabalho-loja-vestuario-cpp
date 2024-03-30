@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="lde.cpp" />
     <ClCompile Include="LDEProdutos.cpp" />
+    <ClCompile Include="listaVendas.cpp" />
     <ClCompile Include="menuInicial.cpp" />
     <ClCompile Include="ListaDeProdutos.cpp" />
   </ItemGroup>
