@@ -10,8 +10,8 @@ struct Venda {
 	std::string vendedor;
 
 	std::string formatarData() {
-		tm* time;
-		localtime_s(time, &this->horario);
+		struct tm* time;
+		time = localtime(&this->horario);
 		std::string aux = std::to_string(time->tm_mday) + "/" + (std::to_string(time->tm_mon + 1)) + "/" + std::to_string(time->tm_year + 1900);
 
 		return aux;
@@ -42,6 +42,10 @@ class ListaVendas :private LDE<Venda> {
 
 
 public:
+	No<Venda>* getComeco() {
+		return this->getNo(0);
+	}
+
 	void addVenda(Venda novaVenda) {
 		this->push(novaVenda);
 	}

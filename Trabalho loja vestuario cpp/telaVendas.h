@@ -36,7 +36,8 @@ namespace Trabalholojavestuariocpp {
 			}
 		}
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dataGrid_Vendas;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ horario;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ quantidadeProd;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valorTotal;
@@ -49,7 +50,7 @@ namespace Trabalholojavestuariocpp {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -59,37 +60,37 @@ namespace Trabalholojavestuariocpp {
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGrid_Vendas = (gcnew System::Windows::Forms::DataGridView());
 			this->horario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->quantidadeProd = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorCobrado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->formaDePagamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vendedor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(606, 308);
+			this->button1->Location = System::Drawing::Point(602, 313);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->Size = System::Drawing::Size(123, 37);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"button1";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &telaVendas::button1_Click);
 			// 
-			// dataGridView1
+			// dataGrid_Vendas
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dataGrid_Vendas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGrid_Vendas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->horario,
 					this->quantidadeProd, this->valorTotal, this->valorCobrado, this->formaDePagamento, this->vendedor
 			});
-			this->dataGridView1->Location = System::Drawing::Point(24, 82);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->Size = System::Drawing::Size(584, 234);
-			this->dataGridView1->TabIndex = 1;
+			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 53);
+			this->dataGrid_Vendas->Name = L"dataGrid_Vendas";
+			this->dataGrid_Vendas->Size = System::Drawing::Size(584, 297);
+			this->dataGrid_Vendas->TabIndex = 1;
 			// 
 			// horario
 			// 
@@ -135,17 +136,27 @@ namespace Trabalholojavestuariocpp {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(737, 362);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->button1);
 			this->Name = L"telaVendas";
 			this->Text = L"telaVendas";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->EndInit();
 			this->ResumeLayout(false);
+
+			core::No<core::Venda>* aux = Global::vendas.getComeco();
+			for (; aux != nullptr; aux = aux->eloF) {
+				core::Venda novaVenda = aux->info;
+				System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + "," + novaVenda.valor + "," + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
+				array<System::String^>^ dataArray = dataString->Split(',');
+				this->dataGrid_Vendas->Rows->Add(dataArray);
+				std::cout << aux->info.vendedor << "\n";
+
+			};
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		std::cout << &Global::vendas << "\n";
-	}
+
+	};
 	};
 }

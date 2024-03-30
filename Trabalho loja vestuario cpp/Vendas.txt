@@ -1,0 +1,4 @@
+ListaDeVendasStorage 3
+1711772829 10 150 30 pix joana
+1711772829 15 150 40 credito jailson
+1711772829 13 150 60 debito rubivaldo-Da-Silva

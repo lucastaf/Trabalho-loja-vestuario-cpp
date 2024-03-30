@@ -24,21 +24,6 @@
     <ClCompile Include="menuInicial.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="telaVendas.cpp">
-      <Filter>Resource Files\Telas</Filter>
-    </ClCompile>
-    <ClCompile Include="criarCaixa.cpp">
-      <Filter>Resource Files\Telas</Filter>
-    </ClCompile>
-    <ClCompile Include="editarCarrinho.cpp">
-      <Filter>Resource Files\Telas</Filter>
-    </ClCompile>
-    <ClCompile Include="editarEstoque.cpp">
-      <Filter>Resource Files\Telas</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menuInicial.h">
