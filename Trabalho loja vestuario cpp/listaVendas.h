@@ -1,4 +1,4 @@
-#include "listaDeProdutos.cpp"
+#include "listaDeProdutos.h"
 
 namespace core {
 struct Venda {

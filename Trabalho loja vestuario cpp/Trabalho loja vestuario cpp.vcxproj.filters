@@ -24,20 +24,23 @@
     <ClCompile Include="menuInicial.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="lde.cpp">
+    <ClCompile Include="lde.h">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
-    <ClCompile Include="ListaDeProdutos.cpp">
+    <ClCompile Include="ListaDeProdutos.h">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
-    <ClCompile Include="listaVendas.cpp">
+    <ClCompile Include="listaVendas.h">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
-    <ClCompile Include="Carrinho.cpp">
+    <ClCompile Include="Carrinho.h">
       <Filter>Resource Files\Código</Filter>
     </ClCompile>
     <ClCompile Include="telaVendas.cpp">
       <Filter>Resource Files\Telas</Filter>
+    </ClCompile>
+    <ClCompile Include="global.h">
+      <Filter>Resource Files\Código</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

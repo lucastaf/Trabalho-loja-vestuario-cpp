@@ -1,4 +1,4 @@
-#include "listaVendas.cpp"
+#include "listaVendas.h"
 
 namespace core {
 	class Carrinho : public ListaProdutos {
