@@ -21,7 +21,7 @@ struct produto {
 
 
 
-//Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
+//CÃ³digo : 0 sucesso, -1 nao encontrado, -2 nao permitido
 class ListaProdutos : protected LDE<produto> {
 protected:
 	int procurarIndexPorCodigo(int codigo) {
@@ -180,7 +180,5 @@ public:
 
 		return 0;
 	}
-
-
 
 };
