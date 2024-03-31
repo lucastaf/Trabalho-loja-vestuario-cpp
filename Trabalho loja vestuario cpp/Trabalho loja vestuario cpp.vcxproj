@@ -119,18 +119,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="criarCaixa.cpp" />
-    <ClCompile Include="editarCarrinho.cpp" />
-    <ClCompile Include="editarEstoque.cpp" />
     <ClCompile Include="menuInicial.cpp" />
-    <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="telaVendas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carrinho.h" />
-    <ClInclude Include="criarCaixa.h" />
-    <ClInclude Include="editarCarrinho.h" />
-    <ClInclude Include="editarEstoque.h" />
+    <ClInclude Include="criarCaixa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="editarCarrinho.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="editarEstoque.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="global.h" />
     <ClInclude Include="lde.h" />
     <ClInclude Include="ListaDeProdutos.h" />
@@ -141,7 +142,14 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="telaVendas.h" />
+    <ClInclude Include="telaVendas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="telaVendas.resx">
+      <DependentUpon>telaVendas.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

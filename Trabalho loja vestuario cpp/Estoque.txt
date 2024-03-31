@@ -1,0 +1,4 @@
+ListaDeProdutosStorage 3
+2213 Calça-azul 20 10
+2200 Blusa-Vermelha 20 20
+2003 Calça-preta 20 10

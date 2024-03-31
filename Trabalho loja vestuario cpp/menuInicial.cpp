@@ -6,9 +6,7 @@
 	using namespace System::Windows::Forms;
 
 	int main() {
-		core::ListaVendas novaLista;
-		Global::vendas = novaLista;
-		std::cout << &Global::vendas << "\n";
+		Global::produtos.readFile();
 		Global::vendas.readFile();
 		Application::EnableVisualStyles();
 		Application::SetCompatibleTextRenderingDefault(false);

@@ -7,6 +7,7 @@
 #include <string> 
 
 namespace core {
+
 	template <class tipoInfo>
 	struct No
 	{
@@ -20,6 +21,7 @@ namespace core {
 	{
 		No<tipoItem>* comeco = nullptr;
 		No<tipoItem>* fim = nullptr;
+
 
 	protected:
 		No<tipoItem>* getNo(int id) {
@@ -51,6 +53,10 @@ namespace core {
 		//Get
 		tipoItem getItem(int id) {
 			No<tipoItem>* aux = this->getNo(id);
+			if (aux == nullptr) {
+				tipoItem novoItem;
+				return novoItem;
+			}
 			return aux->info;
 		}
 
@@ -225,7 +231,11 @@ namespace core {
 			No<tipoItem>* AntElo = aux->eloA;
 			No<tipoItem>* ProxElo = aux->eloF;
 
-			if (ProxElo == nullptr) {
+			if (ProxElo == nullptr && AntElo == nullptr) {
+				this->comeco = nullptr;
+				this->fim = nullptr;
+			}
+			else if (ProxElo == nullptr) {
 				AntElo->eloF = nullptr;
 				this->fim = AntElo;
 			}
