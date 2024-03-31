@@ -50,8 +50,6 @@ class ListaVendas :public LDE<Venda> {
 		std::string dataString1 = getDataString(dia1);
 		std::string dataString2 = getDataString(dia2);
 
-		std::cout << dataString2 <<" "<< dia2 << "\n";
-
 		// Compare year, month, and day
 		if (dataString1 == dataString2) {
 			return true; // The two time_t values are in the same day

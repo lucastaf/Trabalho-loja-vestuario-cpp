@@ -212,15 +212,10 @@ namespace Trabalholojavestuariocpp {
 		this->dataGrid_Vendas->Rows->RemoveAt(selectedRow->Index);
 
 
-		//DataGridViewRow^ selectedRow = this->dataGrid_Vendas->Rows[selectedIndex];
-		//String^ cellValue = selectedRow->Cells[3]->Value->ToString();
-		//Console::WriteLine("Selected row value: " + cellValue);
 		std::time_t horario = safe_cast<std::time_t>(selectedRow->Tag);
 
 		Global::vendas.excluirVendaPorHorario(horario);
-
-		//this->atualizarLista();
-		//Global::vendas.writeFile();
+		Global::vendas.writeFile();
 	}
 	private: System::Void btn_setFilter_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->isFiltred = !this->isFiltred;
