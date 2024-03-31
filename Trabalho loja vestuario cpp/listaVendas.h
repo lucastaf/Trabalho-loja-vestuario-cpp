@@ -1,6 +1,13 @@
 #include "listaDeProdutos.h"
 
 namespace core {
+
+	namespace {
+		std::string getDataString(time_t horario) {
+			struct tm* time = std::localtime(&horario);
+			return std::to_string(time->tm_mday) + "/" + (std::to_string(time->tm_mon + 1)) + "/" + std::to_string(time->tm_year + 1900);
+		}
+	}
 struct Venda {
 	time_t horario;
 	int quantProdutos;
@@ -10,15 +17,13 @@ struct Venda {
 	std::string vendedor;
 
 	std::string formatarData() {
-		struct tm* time;
-		time = localtime(&this->horario);
-		std::string aux = std::to_string(time->tm_mday) + "/" + (std::to_string(time->tm_mon + 1)) + "/" + std::to_string(time->tm_year + 1900);
+		std::string aux = getDataString(this->horario);
 
 		return aux;
 	}
 };
 
-class ListaVendas :private LDE<Venda> {
+class ListaVendas :public LDE<Venda> {
 	static void readWord(std::ifstream& arquivo, int& out)
 	{
 		std::string temp;
@@ -40,10 +45,38 @@ class ListaVendas :private LDE<Venda> {
 		out = stol(temp);
 	}
 
+	static bool testarMesmoDia(time_t dia1, time_t dia2) {
+
+		std::string dataString1 = getDataString(dia1);
+		std::string dataString2 = getDataString(dia2);
+
+		std::cout << dataString2 <<" "<< dia2 << "\n";
+
+		// Compare year, month, and day
+		if (dataString1 == dataString2) {
+			return true; // The two time_t values are in the same day
+		}
+		else {
+			return false; // The two time_t values are not in the same day
+		}
+	}
 
 public:
+
 	No<Venda>* getComeco() {
 		return this->getNo(0);
+	}
+
+	ListaVendas filtrarVendasDeHoje() {
+		ListaVendas novaLista;
+		time_t agora = std::time(NULL);
+		No<Venda>* aux = this->getNo(0);
+		for (; aux != nullptr; aux = aux->eloF) {
+			if (this->testarMesmoDia(aux->info.horario, agora)) {
+				novaLista.addVenda(aux->info);
+			}
+		}
+		return novaLista;
 	}
 
 	int excluirVendaPorHorario(time_t horario) {

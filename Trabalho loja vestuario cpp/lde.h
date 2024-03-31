@@ -7,6 +7,7 @@
 #include <string> 
 
 namespace core {
+
 	template <class tipoInfo>
 	struct No
 	{

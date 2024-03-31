@@ -46,6 +46,8 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valorCobrado;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ formaDePagamento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ vendedor;
+	private: System::Windows::Forms::Button^ btn_setFilter;
+
 	protected:
 
 	private:
@@ -71,6 +73,7 @@ namespace Trabalholojavestuariocpp {
 			this->valorCobrado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->formaDePagamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vendedor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -135,11 +138,22 @@ namespace Trabalholojavestuariocpp {
 			this->vendedor->Name = L"vendedor";
 			this->vendedor->ReadOnly = true;
 			// 
+			// btn_setFilter
+			// 
+			this->btn_setFilter->Location = System::Drawing::Point(602, 13);
+			this->btn_setFilter->Name = L"btn_setFilter";
+			this->btn_setFilter->Size = System::Drawing::Size(96, 45);
+			this->btn_setFilter->TabIndex = 2;
+			this->btn_setFilter->Text = L"Filtrar Hoje";
+			this->btn_setFilter->UseVisualStyleBackColor = true;
+			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
+			// 
 			// telaVendas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(710, 362);
+			this->Controls->Add(this->btn_setFilter);
 			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->btn_exlcuir);
 			this->Name = L"telaVendas";
@@ -150,19 +164,34 @@ namespace Trabalholojavestuariocpp {
 
 		}
 #pragma endregion
-
-	private: core::LDE<std::time_t> *horarios = new core::LDE<std::time_t>;
+	private:
+		core::ListaVendas *listaFiltrada = new core::ListaVendas;
+		bool isFiltred;
 
 	private: void atualizarLista() {
 		this->dataGrid_Vendas->Rows->Clear();
-		this->horarios->deleteList();
-		core::No<core::Venda>* aux = Global::vendas.getComeco();
+		if (this->isFiltred) {
+			this->listaFiltrada->copy(Global::vendas.filtrarVendasDeHoje());
+		}
+		else {
+			this->listaFiltrada->copy(Global::vendas);
+		}
+		core::No<core::Venda>* aux = this->listaFiltrada->getComeco();
 		for (; aux != nullptr; aux = aux->eloF) {
 			core::Venda novaVenda = aux->info;
 			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + ", R$" + novaVenda.valor + ", R$" + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
 			array<System::String^>^ dataArray = dataString->Split(',');
-			this->dataGrid_Vendas->Rows->Add(dataArray);
-			this->horarios->push(novaVenda.horario);
+
+			DataGridViewRow^ novaLinha = gcnew DataGridViewRow();
+			novaLinha->Tag = novaVenda.horario;
+			for each (System::String ^ str in dataArray) {
+				DataGridViewCell^ newCell = gcnew DataGridViewTextBoxCell();
+				newCell->Value = str;
+				novaLinha->Cells->Add(newCell);
+			}
+		
+			
+			this->dataGrid_Vendas->Rows->Add(novaLinha);
 
 		};
 	}
@@ -176,20 +205,32 @@ namespace Trabalholojavestuariocpp {
 		if (this->dataGrid_Vendas->SelectedCells->Count <= 0)
 			return;
 
-		int selectedIndex = this->dataGrid_Vendas->SelectedCells[0]->RowIndex;
+		DataGridViewRow^ selectedRow = this->dataGrid_Vendas->SelectedCells[0]->OwningRow;
+
+		if (selectedRow == nullptr || selectedRow->Tag == nullptr) return;
+
+		this->dataGrid_Vendas->Rows->RemoveAt(selectedRow->Index);
 
 
 		//DataGridViewRow^ selectedRow = this->dataGrid_Vendas->Rows[selectedIndex];
 		//String^ cellValue = selectedRow->Cells[3]->Value->ToString();
 		//Console::WriteLine("Selected row value: " + cellValue);
+		std::time_t horario = safe_cast<std::time_t>(selectedRow->Tag);
 
-		std::cout << this->horarios->getItem(selectedIndex);
+		Global::vendas.excluirVendaPorHorario(horario);
 
-		Global::vendas.excluirVendaPorHorario(this->horarios->getItem(selectedIndex));
-		this->horarios->deleteItemById(selectedIndex);
-
-		this->atualizarLista();
+		//this->atualizarLista();
 		//Global::vendas.writeFile();
+	}
+	private: System::Void btn_setFilter_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->isFiltred = !this->isFiltred;
+		this->atualizarLista();
+		if (this->isFiltred) {
+			this->btn_setFilter->Text = "Remover Filtro";
+		}
+		else {
+			this->btn_setFilter->Text = "Filtrar Hoje";
+		}
 	}
 	};
 }
