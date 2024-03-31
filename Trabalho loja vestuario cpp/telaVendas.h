@@ -48,6 +48,8 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ vendedor;
 	private: System::Windows::Forms::Button^ btn_setFilter;
 
+
+
 	protected:
 
 	private:
@@ -157,7 +159,7 @@ namespace Trabalholojavestuariocpp {
 			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->btn_exlcuir);
 			this->Name = L"telaVendas";
-			this->Text = L"telaVendas";
+			this->Text = L"Relatorio";
 			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->EndInit();
 			this->ResumeLayout(false);
@@ -190,7 +192,6 @@ namespace Trabalholojavestuariocpp {
 				novaLinha->Cells->Add(newCell);
 			}
 		
-			
 			this->dataGrid_Vendas->Rows->Add(novaLinha);
 
 		};
