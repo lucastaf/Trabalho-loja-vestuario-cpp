@@ -35,7 +35,9 @@ namespace Trabalholojavestuariocpp {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btn_exlcuir;
+	protected:
+
 	private: System::Windows::Forms::DataGridView^ dataGrid_Vendas;
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ horario;
@@ -57,9 +59,11 @@ namespace Trabalholojavestuariocpp {
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		/// 
+
 		void InitializeComponent(void)
 		{
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->btn_exlcuir = (gcnew System::Windows::Forms::Button());
 			this->dataGrid_Vendas = (gcnew System::Windows::Forms::DataGridView());
 			this->horario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->quantidadeProd = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -70,15 +74,15 @@ namespace Trabalholojavestuariocpp {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// button1
+			// btn_exlcuir
 			// 
-			this->button1->Location = System::Drawing::Point(602, 313);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(123, 37);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &telaVendas::button1_Click);
+			this->btn_exlcuir->Location = System::Drawing::Point(602, 294);
+			this->btn_exlcuir->Name = L"btn_exlcuir";
+			this->btn_exlcuir->Size = System::Drawing::Size(96, 56);
+			this->btn_exlcuir->TabIndex = 0;
+			this->btn_exlcuir->Text = L"Excluir Registro";
+			this->btn_exlcuir->UseVisualStyleBackColor = true;
+			this->btn_exlcuir->Click += gcnew System::EventHandler(this, &telaVendas::btn_exlcuir_Click);
 			// 
 			// dataGrid_Vendas
 			// 
@@ -87,9 +91,9 @@ namespace Trabalholojavestuariocpp {
 				this->horario,
 					this->quantidadeProd, this->valorTotal, this->valorCobrado, this->formaDePagamento, this->vendedor
 			});
-			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 53);
+			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 12);
 			this->dataGrid_Vendas->Name = L"dataGrid_Vendas";
-			this->dataGrid_Vendas->Size = System::Drawing::Size(584, 297);
+			this->dataGrid_Vendas->Size = System::Drawing::Size(584, 338);
 			this->dataGrid_Vendas->TabIndex = 1;
 			// 
 			// horario
@@ -135,9 +139,9 @@ namespace Trabalholojavestuariocpp {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(737, 362);
+			this->ClientSize = System::Drawing::Size(710, 362);
 			this->Controls->Add(this->dataGrid_Vendas);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btn_exlcuir);
 			this->Name = L"telaVendas";
 			this->Text = L"telaVendas";
 			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);
@@ -146,33 +150,46 @@ namespace Trabalholojavestuariocpp {
 
 		}
 #pragma endregion
-	private: System::Void telaVendas_Load(System::Object^ sender, System::EventArgs^ e) {
+
+	private: core::LDE<std::time_t> *horarios = new core::LDE<std::time_t>;
+
+	private: void atualizarLista() {
+		this->dataGrid_Vendas->Rows->Clear();
+		this->horarios->deleteList();
 		core::No<core::Venda>* aux = Global::vendas.getComeco();
 		for (; aux != nullptr; aux = aux->eloF) {
 			core::Venda novaVenda = aux->info;
 			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + ", R$" + novaVenda.valor + ", R$" + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
 			array<System::String^>^ dataArray = dataString->Split(',');
 			this->dataGrid_Vendas->Rows->Add(dataArray);
+			this->horarios->push(novaVenda.horario);
 
 		};
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	// Get the first selected row
-	if (this->dataGrid_Vendas->SelectedRows->Count <= 0)
-	{
-		// Safe to access the first selected row
-		return;
-		// Your code to work with selectedRow
+
+
+	private: System::Void telaVendas_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->atualizarLista();
 	}
+	private: System::Void btn_exlcuir_Click(System::Object^ sender, System::EventArgs^ e) {
+		// Get the first selected row
+		if (this->dataGrid_Vendas->SelectedCells->Count <= 0)
+			return;
 
-	DataGridViewRow^ selectedRow = this->dataGrid_Vendas->SelectedRows[0];
+		int selectedIndex = this->dataGrid_Vendas->SelectedCells[0]->RowIndex;
 
-	// Now you can access the data in the selected row
-	// For example, to get the value of the first cell in the selected row
-	String^ cellValue = selectedRow->Cells[0]->Value->ToString();
 
-	// Output the value to the console
-	Console::WriteLine("Selected row value: " + cellValue);
-}
-};
+		//DataGridViewRow^ selectedRow = this->dataGrid_Vendas->Rows[selectedIndex];
+		//String^ cellValue = selectedRow->Cells[3]->Value->ToString();
+		//Console::WriteLine("Selected row value: " + cellValue);
+
+		std::cout << this->horarios->getItem(selectedIndex);
+
+		Global::vendas.excluirVendaPorHorario(this->horarios->getItem(selectedIndex));
+		this->horarios->deleteItemById(selectedIndex);
+
+		this->atualizarLista();
+		//Global::vendas.writeFile();
+	}
+	};
 }

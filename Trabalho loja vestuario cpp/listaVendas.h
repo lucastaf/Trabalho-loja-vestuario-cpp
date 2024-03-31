@@ -46,6 +46,19 @@ public:
 		return this->getNo(0);
 	}
 
+	int excluirVendaPorHorario(time_t horario) {
+		No<Venda> *aux = this->getNo(0);
+		int count = 0;
+		for (; aux != nullptr;aux = aux->eloF) {
+			if (aux->info.horario == horario) {
+				this->deleteItemById(count);
+				return 0;
+			}
+			count++;
+		}
+		return -1;
+	}
+
 	void addVenda(Venda novaVenda) {
 		this->push(novaVenda);
 	}
