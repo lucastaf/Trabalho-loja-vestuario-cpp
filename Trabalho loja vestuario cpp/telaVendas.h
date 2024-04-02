@@ -40,13 +40,25 @@ namespace Trabalholojavestuariocpp {
 
 	private: System::Windows::Forms::DataGridView^ dataGrid_Vendas;
 
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ btn_setFilter;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ horario;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ quantidadeProd;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valorTotal;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valorCobrado;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ formaDePagamento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ vendedor;
-	private: System::Windows::Forms::Button^ btn_setFilter;
+
+
+
+
+
+
 
 
 
@@ -67,15 +79,16 @@ namespace Trabalholojavestuariocpp {
 
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->btn_exlcuir = (gcnew System::Windows::Forms::Button());
 			this->dataGrid_Vendas = (gcnew System::Windows::Forms::DataGridView());
+			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
 			this->horario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->quantidadeProd = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorCobrado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->formaDePagamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vendedor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -98,11 +111,25 @@ namespace Trabalholojavestuariocpp {
 			});
 			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 12);
 			this->dataGrid_Vendas->Name = L"dataGrid_Vendas";
+			this->dataGrid_Vendas->ReadOnly = true;
 			this->dataGrid_Vendas->Size = System::Drawing::Size(584, 338);
 			this->dataGrid_Vendas->TabIndex = 1;
 			// 
+			// btn_setFilter
+			// 
+			this->btn_setFilter->Location = System::Drawing::Point(602, 13);
+			this->btn_setFilter->Name = L"btn_setFilter";
+			this->btn_setFilter->Size = System::Drawing::Size(96, 45);
+			this->btn_setFilter->TabIndex = 2;
+			this->btn_setFilter->Text = L"Filtrar Hoje";
+			this->btn_setFilter->UseVisualStyleBackColor = true;
+			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
+			// 
 			// horario
 			// 
+			dataGridViewCellStyle1->Format = L"C2";
+			dataGridViewCellStyle1->NullValue = nullptr;
+			this->horario->DefaultCellStyle = dataGridViewCellStyle1;
 			this->horario->HeaderText = L"Horario";
 			this->horario->Name = L"horario";
 			this->horario->ReadOnly = true;
@@ -139,16 +166,6 @@ namespace Trabalholojavestuariocpp {
 			this->vendedor->HeaderText = L"Vendedor";
 			this->vendedor->Name = L"vendedor";
 			this->vendedor->ReadOnly = true;
-			// 
-			// btn_setFilter
-			// 
-			this->btn_setFilter->Location = System::Drawing::Point(602, 13);
-			this->btn_setFilter->Name = L"btn_setFilter";
-			this->btn_setFilter->Size = System::Drawing::Size(96, 45);
-			this->btn_setFilter->TabIndex = 2;
-			this->btn_setFilter->Text = L"Filtrar Hoje";
-			this->btn_setFilter->UseVisualStyleBackColor = true;
-			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
 			// 
 			// telaVendas
 			// 
