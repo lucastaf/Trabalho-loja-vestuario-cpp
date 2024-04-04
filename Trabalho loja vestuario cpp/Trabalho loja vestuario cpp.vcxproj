@@ -126,9 +126,6 @@
     <ClInclude Include="criarCaixa.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="telaCarrinho.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="editarEstoque.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -139,7 +136,7 @@
     <ClInclude Include="menuInicial.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="telaCarrinho.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="telaVendas.h">
@@ -147,6 +144,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="criarCaixa.resx">
+      <DependentUpon>criarCaixa.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuInicial.resx">
+      <DependentUpon>menuInicial.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="telaCarrinho.resx">
       <DependentUpon>telaCarrinho.h</DependentUpon>
     </EmbeddedResource>

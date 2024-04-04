@@ -39,10 +39,23 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::ComboBox^ btn_formapagamento;
 	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ codigo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ produto;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ quantidade;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valor;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	private:
@@ -63,21 +76,23 @@ namespace Trabalholojavestuariocpp {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->btn_formapagamento = (gcnew System::Windows::Forms::ComboBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->codigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->produto = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->quantidade = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->valor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
 			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->BackgroundColor = System::Drawing::SystemColors::Control;
 			this->dataGridView1->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4
+				this->codigo,
+					this->produto, this->quantidade, this->valor
 			});
 			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
@@ -89,12 +104,12 @@ namespace Trabalholojavestuariocpp {
 			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->GridColor = System::Drawing::SystemColors::Control;
-			this->dataGridView1->Location = System::Drawing::Point(233, 134);
+			this->dataGridView1->Location = System::Drawing::Point(12, 133);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(548, 266);
+			this->dataGridView1->Size = System::Drawing::Size(452, 297);
 			this->dataGridView1->TabIndex = 0;
 			// 
 			// label1
@@ -102,7 +117,7 @@ namespace Trabalholojavestuariocpp {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(418, 60);
+			this->label1->Location = System::Drawing::Point(414, 44);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(162, 32);
 			this->label1->TabIndex = 1;
@@ -126,33 +141,33 @@ namespace Trabalholojavestuariocpp {
 			this->button1->Text = L"Finalizar Compra";
 			this->button1->UseVisualStyleBackColor = true;
 			// 
-			// Column1
+			// codigo
 			// 
-			this->Column1->HeaderText = L"Produto";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->Width = 125;
+			this->codigo->HeaderText = L"Código";
+			this->codigo->MinimumWidth = 6;
+			this->codigo->Name = L"codigo";
+			this->codigo->Width = 60;
 			// 
-			// Column2
+			// produto
 			// 
-			this->Column2->HeaderText = L"Quantidade";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
+			this->produto->HeaderText = L"Produto";
+			this->produto->MinimumWidth = 6;
+			this->produto->Name = L"produto";
+			this->produto->Width = 150;
 			// 
-			// Column3
+			// quantidade
 			// 
-			this->Column3->HeaderText = L"Valor";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->Width = 125;
+			this->quantidade->HeaderText = L"Quantidade";
+			this->quantidade->MinimumWidth = 6;
+			this->quantidade->Name = L"quantidade";
+			this->quantidade->Width = 80;
 			// 
-			// Column4
+			// valor
 			// 
-			this->Column4->HeaderText = L"Código";
-			this->Column4->MinimumWidth = 6;
-			this->Column4->Name = L"Column4";
-			this->Column4->Width = 125;
+			this->valor->HeaderText = L"Valor";
+			this->valor->MinimumWidth = 6;
+			this->valor->Name = L"valor";
+			this->valor->Width = 60;
 			// 
 			// criarCaixa
 			// 

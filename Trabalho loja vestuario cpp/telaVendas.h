@@ -82,21 +82,22 @@ namespace Trabalholojavestuariocpp {
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->btn_exlcuir = (gcnew System::Windows::Forms::Button());
 			this->dataGrid_Vendas = (gcnew System::Windows::Forms::DataGridView());
-			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
 			this->horario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->quantidadeProd = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valorCobrado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->formaDePagamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vendedor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btn_exlcuir
 			// 
-			this->btn_exlcuir->Location = System::Drawing::Point(602, 294);
+			this->btn_exlcuir->Location = System::Drawing::Point(803, 362);
+			this->btn_exlcuir->Margin = System::Windows::Forms::Padding(4);
 			this->btn_exlcuir->Name = L"btn_exlcuir";
-			this->btn_exlcuir->Size = System::Drawing::Size(96, 56);
+			this->btn_exlcuir->Size = System::Drawing::Size(128, 69);
 			this->btn_exlcuir->TabIndex = 0;
 			this->btn_exlcuir->Text = L"Excluir Registro";
 			this->btn_exlcuir->UseVisualStyleBackColor = true;
@@ -104,26 +105,21 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// dataGrid_Vendas
 			// 
+			this->dataGrid_Vendas->AllowUserToAddRows = false;
+			this->dataGrid_Vendas->AllowUserToDeleteRows = false;
 			this->dataGrid_Vendas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGrid_Vendas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->horario,
 					this->quantidadeProd, this->valorTotal, this->valorCobrado, this->formaDePagamento, this->vendedor
 			});
-			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 12);
+			this->dataGrid_Vendas->Location = System::Drawing::Point(16, 15);
+			this->dataGrid_Vendas->Margin = System::Windows::Forms::Padding(4);
 			this->dataGrid_Vendas->Name = L"dataGrid_Vendas";
 			this->dataGrid_Vendas->ReadOnly = true;
-			this->dataGrid_Vendas->Size = System::Drawing::Size(584, 338);
+			this->dataGrid_Vendas->RowHeadersWidth = 51;
+			this->dataGrid_Vendas->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGrid_Vendas->Size = System::Drawing::Size(779, 416);
 			this->dataGrid_Vendas->TabIndex = 1;
-			// 
-			// btn_setFilter
-			// 
-			this->btn_setFilter->Location = System::Drawing::Point(602, 13);
-			this->btn_setFilter->Name = L"btn_setFilter";
-			this->btn_setFilter->Size = System::Drawing::Size(96, 45);
-			this->btn_setFilter->TabIndex = 2;
-			this->btn_setFilter->Text = L"Filtrar Hoje";
-			this->btn_setFilter->UseVisualStyleBackColor = true;
-			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
 			// 
 			// horario
 			// 
@@ -131,12 +127,15 @@ namespace Trabalholojavestuariocpp {
 			dataGridViewCellStyle1->NullValue = nullptr;
 			this->horario->DefaultCellStyle = dataGridViewCellStyle1;
 			this->horario->HeaderText = L"Horario";
+			this->horario->MinimumWidth = 6;
 			this->horario->Name = L"horario";
 			this->horario->ReadOnly = true;
+			this->horario->Width = 125;
 			// 
 			// quantidadeProd
 			// 
 			this->quantidadeProd->HeaderText = L"Quantidade";
+			this->quantidadeProd->MinimumWidth = 6;
 			this->quantidadeProd->Name = L"quantidadeProd";
 			this->quantidadeProd->ReadOnly = true;
 			this->quantidadeProd->Width = 80;
@@ -144,6 +143,7 @@ namespace Trabalholojavestuariocpp {
 			// valorTotal
 			// 
 			this->valorTotal->HeaderText = L"Valor Bruto";
+			this->valorTotal->MinimumWidth = 6;
 			this->valorTotal->Name = L"valorTotal";
 			this->valorTotal->ReadOnly = true;
 			this->valorTotal->Width = 80;
@@ -151,6 +151,7 @@ namespace Trabalholojavestuariocpp {
 			// valorCobrado
 			// 
 			this->valorCobrado->HeaderText = L"Valor liquído";
+			this->valorCobrado->MinimumWidth = 6;
 			this->valorCobrado->Name = L"valorCobrado";
 			this->valorCobrado->ReadOnly = true;
 			this->valorCobrado->Width = 80;
@@ -158,23 +159,39 @@ namespace Trabalholojavestuariocpp {
 			// formaDePagamento
 			// 
 			this->formaDePagamento->HeaderText = L"Forma de pagamento";
+			this->formaDePagamento->MinimumWidth = 6;
 			this->formaDePagamento->Name = L"formaDePagamento";
 			this->formaDePagamento->ReadOnly = true;
+			this->formaDePagamento->Width = 125;
 			// 
 			// vendedor
 			// 
 			this->vendedor->HeaderText = L"Vendedor";
+			this->vendedor->MinimumWidth = 6;
 			this->vendedor->Name = L"vendedor";
 			this->vendedor->ReadOnly = true;
+			this->vendedor->Width = 125;
+			// 
+			// btn_setFilter
+			// 
+			this->btn_setFilter->Location = System::Drawing::Point(803, 16);
+			this->btn_setFilter->Margin = System::Windows::Forms::Padding(4);
+			this->btn_setFilter->Name = L"btn_setFilter";
+			this->btn_setFilter->Size = System::Drawing::Size(128, 55);
+			this->btn_setFilter->TabIndex = 2;
+			this->btn_setFilter->Text = L"Filtrar Hoje";
+			this->btn_setFilter->UseVisualStyleBackColor = true;
+			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
 			// 
 			// telaVendas
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(710, 362);
+			this->ClientSize = System::Drawing::Size(947, 446);
 			this->Controls->Add(this->btn_setFilter);
 			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->btn_exlcuir);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"telaVendas";
 			this->Text = L"Relatorio";
 			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);
