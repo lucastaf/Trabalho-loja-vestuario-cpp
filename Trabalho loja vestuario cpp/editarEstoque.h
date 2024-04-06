@@ -34,43 +34,28 @@ namespace Trabalholojavestuariocpp {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Label^ lbl_controleEstoque;
+	private: System::Windows::Forms::DataGridView^ dataGrid_estoque;
+	private: System::Windows::Forms::TextBox^ txt_codigo;
+	private: System::Windows::Forms::TextBox^ txt_produto;
+	private: System::Windows::Forms::TextBox^ txt_preco;
+	private: System::Windows::Forms::TextBox^ txt_estoque;
+	protected:
 
 	protected:
 
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::DataGridView^ dtgrid_test;
-
-
+	private: System::Windows::Forms::Label^ lbl_codigo;
+	private: System::Windows::Forms::Label^ lbl_produtos;
+	private: System::Windows::Forms::Label^ lbl_preco;
+	private: System::Windows::Forms::Label^ lbl_estoque;
+	private: System::Windows::Forms::Button^ btn_aumentarEstoque;
+	private: System::Windows::Forms::Button^ btn_diminuirEstoque;
+	private: System::Windows::Forms::Button^ btn_adicionarProduto;
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Itens;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 
 	protected:
 
@@ -87,68 +72,69 @@ namespace Trabalholojavestuariocpp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->dtgrid_test = (gcnew System::Windows::Forms::DataGridView());
+			this->lbl_controleEstoque = (gcnew System::Windows::Forms::Label());
+			this->dataGrid_estoque = (gcnew System::Windows::Forms::DataGridView());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dtgrid_test))->BeginInit();
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->txt_codigo = (gcnew System::Windows::Forms::TextBox());
+			this->txt_produto = (gcnew System::Windows::Forms::TextBox());
+			this->txt_preco = (gcnew System::Windows::Forms::TextBox());
+			this->txt_estoque = (gcnew System::Windows::Forms::TextBox());
+			this->lbl_codigo = (gcnew System::Windows::Forms::Label());
+			this->lbl_produtos = (gcnew System::Windows::Forms::Label());
+			this->lbl_preco = (gcnew System::Windows::Forms::Label());
+			this->lbl_estoque = (gcnew System::Windows::Forms::Label());
+			this->btn_aumentarEstoque = (gcnew System::Windows::Forms::Button());
+			this->btn_diminuirEstoque = (gcnew System::Windows::Forms::Button());
+			this->btn_adicionarProduto = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// label1
+			// lbl_controleEstoque
 			// 
-			this->label1->AutoSize = true;
-			this->label1->BackColor = System::Drawing::SystemColors::Control;
-			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->lbl_controleEstoque->AutoSize = true;
+			this->lbl_controleEstoque->BackColor = System::Drawing::SystemColors::Control;
+			this->lbl_controleEstoque->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->lbl_controleEstoque->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(418, 48);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(239, 34);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"Controle de Estoque";
-			this->label1->Click += gcnew System::EventHandler(this, &editarEstoque::label1_Click_1);
+			this->lbl_controleEstoque->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->lbl_controleEstoque->Location = System::Drawing::Point(236, 59);
+			this->lbl_controleEstoque->Name = L"lbl_controleEstoque";
+			this->lbl_controleEstoque->Size = System::Drawing::Size(239, 34);
+			this->lbl_controleEstoque->TabIndex = 1;
+			this->lbl_controleEstoque->Text = L"Controle de Estoque";
 			// 
-			// dtgrid_test
+			// dataGrid_estoque
 			// 
-			this->dtgrid_test->AllowUserToOrderColumns = true;
-			this->dtgrid_test->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
-			this->dtgrid_test->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableWithoutHeaderText;
-			this->dtgrid_test->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			this->dtgrid_test->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dtgrid_test->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+			this->dataGrid_estoque->AllowUserToAddRows = false;
+			this->dataGrid_estoque->AllowUserToDeleteRows = false;
+			this->dataGrid_estoque->BackgroundColor = System::Drawing::SystemColors::ButtonFace;
+			this->dataGrid_estoque->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::EnableWithoutHeaderText;
+			this->dataGrid_estoque->ColumnHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			this->dataGrid_estoque->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGrid_estoque->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->Column3,
-					this->Itens, this->Column2, this->Column1
+					this->Itens, this->Column1, this->Column2
 			});
-			this->dtgrid_test->GridColor = System::Drawing::SystemColors::Control;
-			this->dtgrid_test->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dtgrid_test->Location = System::Drawing::Point(256, 127);
-			this->dtgrid_test->Name = L"dtgrid_test";
-			this->dtgrid_test->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			this->dtgrid_test->RowHeadersWidth = 51;
-			this->dtgrid_test->RowTemplate->Height = 24;
-			this->dtgrid_test->Size = System::Drawing::Size(556, 335);
-			this->dtgrid_test->TabIndex = 2;
-			this->dtgrid_test->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &editarEstoque::dataGridView1_CellContentClick);
+			this->dataGrid_estoque->GridColor = System::Drawing::SystemColors::Control;
+			this->dataGrid_estoque->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->dataGrid_estoque->Location = System::Drawing::Point(77, 125);
+			this->dataGrid_estoque->Name = L"dataGrid_estoque";
+			this->dataGrid_estoque->ReadOnly = true;
+			this->dataGrid_estoque->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			this->dataGrid_estoque->RowHeadersWidth = 51;
+			this->dataGrid_estoque->RowTemplate->Height = 24;
+			this->dataGrid_estoque->Size = System::Drawing::Size(556, 335);
+			this->dataGrid_estoque->TabIndex = 2;
 			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Código";
 			this->Column3->MinimumWidth = 6;
 			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
 			this->Column3->Width = 125;
 			// 
 			// Itens
@@ -157,158 +143,146 @@ namespace Trabalholojavestuariocpp {
 			this->Itens->HeaderText = L"Produtos";
 			this->Itens->MinimumWidth = 12;
 			this->Itens->Name = L"Itens";
+			this->Itens->ReadOnly = true;
 			this->Itens->Width = 130;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Quantidade";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->Width = 125;
 			// 
 			// Column1
 			// 
-			this->Column1->HeaderText = L"Valor";
+			this->Column1->HeaderText = L"Preço";
 			this->Column1->MinimumWidth = 6;
 			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
 			this->Column1->Width = 125;
 			// 
-			// textBox1
+			// Column2
 			// 
-			this->textBox1->Location = System::Drawing::Point(851, 151);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 22);
-			this->textBox1->TabIndex = 3;
+			this->Column2->HeaderText = L"Estoque";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 125;
 			// 
-			// textBox2
+			// txt_codigo
 			// 
-			this->textBox2->Location = System::Drawing::Point(851, 244);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 22);
-			this->textBox2->TabIndex = 4;
+			this->txt_codigo->Location = System::Drawing::Point(672, 96);
+			this->txt_codigo->Name = L"txt_codigo";
+			this->txt_codigo->Size = System::Drawing::Size(100, 22);
+			this->txt_codigo->TabIndex = 3;
 			// 
-			// textBox3
+			// txt_produto
 			// 
-			this->textBox3->Location = System::Drawing::Point(851, 335);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 22);
-			this->textBox3->TabIndex = 5;
+			this->txt_produto->Location = System::Drawing::Point(672, 189);
+			this->txt_produto->Name = L"txt_produto";
+			this->txt_produto->Size = System::Drawing::Size(100, 22);
+			this->txt_produto->TabIndex = 4;
 			// 
-			// textBox4
+			// txt_preco
 			// 
-			this->textBox4->Location = System::Drawing::Point(851, 428);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(100, 22);
-			this->textBox4->TabIndex = 6;
+			this->txt_preco->Location = System::Drawing::Point(672, 280);
+			this->txt_preco->Name = L"txt_preco";
+			this->txt_preco->Size = System::Drawing::Size(100, 22);
+			this->txt_preco->TabIndex = 5;
 			// 
-			// label2
+			// txt_estoque
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(848, 132);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(51, 16);
-			this->label2->TabIndex = 7;
-			this->label2->Text = L"Código";
+			this->txt_estoque->Location = System::Drawing::Point(672, 373);
+			this->txt_estoque->Name = L"txt_estoque";
+			this->txt_estoque->Size = System::Drawing::Size(100, 22);
+			this->txt_estoque->TabIndex = 6;
 			// 
-			// label3
+			// lbl_codigo
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(848, 225);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(61, 16);
-			this->label3->TabIndex = 8;
-			this->label3->Text = L"Produtos";
+			this->lbl_codigo->AutoSize = true;
+			this->lbl_codigo->Location = System::Drawing::Point(672, 77);
+			this->lbl_codigo->Name = L"lbl_codigo";
+			this->lbl_codigo->Size = System::Drawing::Size(51, 16);
+			this->lbl_codigo->TabIndex = 7;
+			this->lbl_codigo->Text = L"Código";
 			// 
-			// label4
+			// lbl_produtos
 			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(848, 316);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(77, 16);
-			this->label4->TabIndex = 9;
-			this->label4->Text = L"Quantidade";
+			this->lbl_produtos->AutoSize = true;
+			this->lbl_produtos->Location = System::Drawing::Point(672, 170);
+			this->lbl_produtos->Name = L"lbl_produtos";
+			this->lbl_produtos->Size = System::Drawing::Size(61, 16);
+			this->lbl_produtos->TabIndex = 8;
+			this->lbl_produtos->Text = L"Produtos";
 			// 
-			// label5
+			// lbl_preco
 			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(848, 409);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(39, 16);
-			this->label5->TabIndex = 10;
-			this->label5->Text = L"Valor";
+			this->lbl_preco->AutoSize = true;
+			this->lbl_preco->Location = System::Drawing::Point(672, 261);
+			this->lbl_preco->Name = L"lbl_preco";
+			this->lbl_preco->Size = System::Drawing::Size(43, 16);
+			this->lbl_preco->TabIndex = 9;
+			this->lbl_preco->Text = L"Preço";
 			// 
-			// button1
+			// lbl_estoque
 			// 
-			this->button1->Location = System::Drawing::Point(256, 468);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 11;
-			this->button1->Text = L"Adicionar";
-			this->button1->UseVisualStyleBackColor = true;
+			this->lbl_estoque->AutoSize = true;
+			this->lbl_estoque->Location = System::Drawing::Point(672, 354);
+			this->lbl_estoque->Name = L"lbl_estoque";
+			this->lbl_estoque->Size = System::Drawing::Size(57, 16);
+			this->lbl_estoque->TabIndex = 10;
+			this->lbl_estoque->Text = L"Estoque";
 			// 
-			// button2
+			// btn_aumentarEstoque
 			// 
-			this->button2->Location = System::Drawing::Point(337, 468);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(83, 23);
-			this->button2->TabIndex = 12;
-			this->button2->Text = L"Remover";
-			this->button2->UseVisualStyleBackColor = true;
+			this->btn_aumentarEstoque->Location = System::Drawing::Point(77, 466);
+			this->btn_aumentarEstoque->Name = L"btn_aumentarEstoque";
+			this->btn_aumentarEstoque->Size = System::Drawing::Size(94, 27);
+			this->btn_aumentarEstoque->TabIndex = 11;
+			this->btn_aumentarEstoque->Text = L"Adicionar";
+			this->btn_aumentarEstoque->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btn_diminuirEstoque
 			// 
-			this->button3->Location = System::Drawing::Point(851, 519);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(100, 26);
-			this->button3->TabIndex = 13;
-			this->button3->Text = L"Adicionar";
-			this->button3->UseVisualStyleBackColor = true;
+			this->btn_diminuirEstoque->Location = System::Drawing::Point(177, 466);
+			this->btn_diminuirEstoque->Name = L"btn_diminuirEstoque";
+			this->btn_diminuirEstoque->Size = System::Drawing::Size(94, 27);
+			this->btn_diminuirEstoque->TabIndex = 12;
+			this->btn_diminuirEstoque->Text = L"Remover";
+			this->btn_diminuirEstoque->UseVisualStyleBackColor = true;
+			// 
+			// btn_adicionarProduto
+			// 
+			this->btn_adicionarProduto->Location = System::Drawing::Point(672, 464);
+			this->btn_adicionarProduto->Name = L"btn_adicionarProduto";
+			this->btn_adicionarProduto->Size = System::Drawing::Size(100, 26);
+			this->btn_adicionarProduto->TabIndex = 13;
+			this->btn_adicionarProduto->Text = L"Adicionar";
+			this->btn_adicionarProduto->UseVisualStyleBackColor = true;
 			// 
 			// editarEstoque
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
-			this->ClientSize = System::Drawing::Size(1096, 575);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->dtgrid_test);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(811, 567);
+			this->Controls->Add(this->btn_adicionarProduto);
+			this->Controls->Add(this->btn_diminuirEstoque);
+			this->Controls->Add(this->btn_aumentarEstoque);
+			this->Controls->Add(this->lbl_estoque);
+			this->Controls->Add(this->lbl_preco);
+			this->Controls->Add(this->lbl_produtos);
+			this->Controls->Add(this->lbl_codigo);
+			this->Controls->Add(this->txt_estoque);
+			this->Controls->Add(this->txt_preco);
+			this->Controls->Add(this->txt_produto);
+			this->Controls->Add(this->txt_codigo);
+			this->Controls->Add(this->dataGrid_estoque);
+			this->Controls->Add(this->lbl_controleEstoque);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"editarEstoque";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"editarEstoque";
 			this->TransparencyKey = System::Drawing::Color::DimGray;
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dtgrid_test))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void backgroundWorker1_DoWork(System::Object^ sender, System::ComponentModel::DoWorkEventArgs^ e) {
-}
-private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void checkedListBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
+
 };
 }
