@@ -1,5 +1,6 @@
 C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalho loja vestuario cpp.vcxproj.AssemblyReference.cache
 C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalholojavestuariocpp.telaVendas.resources
 C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalho loja vestuario cpp.vcxproj.GenerateResource.cache
-C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalholojavestuariocpp.editarEstoque.resources
+C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalholojavestuariocpp.criarCaixa.resources
 C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalholojavestuariocpp.menuInicial.resources
+C:\Users\lucas\Documents\GitHub\Trabalho-loja-vestuario-cpp\Trabalho loja vestuario cpp\x64\Debug\Trabalholojavestuariocpp.telaCarrinho.resources

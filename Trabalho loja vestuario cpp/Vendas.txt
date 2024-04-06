@@ -1,7 +1,4 @@
-ListaDeVendasStorage 6
-1711772829 10 150 30 pix joana1
+ListaDeVendasStorage 3
 1711772830 15 150 40 credito jailson2
-1711772831 13 150 60 debito rubivaldo-Da-Silva3
-1711893272 20 120 100 dinheiro daniel-da-silva4
 1711893273 10 120 200 pix jailson5
 1711893274 10 130 150 credito joana6

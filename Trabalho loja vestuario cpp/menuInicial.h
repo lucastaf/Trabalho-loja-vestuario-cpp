@@ -1,6 +1,6 @@
 #pragma once
 #include "telaVendas.h"
-#include "editarEstoque.h"
+#include "telaCarrinho.h"
 
 namespace Trabalholojavestuariocpp {
 
@@ -90,6 +90,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_comprar->TabIndex = 1;
 			this->btn_comprar->Text = L"Comprar";
 			this->btn_comprar->UseVisualStyleBackColor = true;
+			this->btn_comprar->Click += gcnew System::EventHandler(this, &menuInicial::btn_comprar_Click);
 			// 
 			// btn_gerenciar
 			// 
@@ -102,7 +103,6 @@ namespace Trabalholojavestuariocpp {
 			this->btn_gerenciar->TabIndex = 2;
 			this->btn_gerenciar->Text = L"Gerenciar Estoque";
 			this->btn_gerenciar->UseVisualStyleBackColor = true;
-			this->btn_gerenciar->Click += gcnew System::EventHandler(this, &menuInicial::btn_gerenciar_Click);
 			// 
 			// btn_relatorio
 			// 
@@ -138,9 +138,10 @@ namespace Trabalholojavestuariocpp {
 		telaVendas^ novaTela = gcnew telaVendas();
 		novaTela->ShowDialog();
 	}
-	private: System::Void btn_gerenciar_Click(System::Object^ sender, System::EventArgs^ e) {
-		editarEstoque^ novaTela = gcnew editarEstoque();
+	private: System::Void btn_comprar_Click(System::Object^ sender, System::EventArgs^ e) {
+		editarCarrinho^ novaTela = gcnew editarCarrinho();
 		novaTela->ShowDialog();
 	}
 	};
 }
+
