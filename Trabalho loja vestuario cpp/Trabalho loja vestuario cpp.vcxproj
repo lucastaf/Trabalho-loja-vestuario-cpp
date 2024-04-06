@@ -147,6 +147,9 @@
     <EmbeddedResource Include="criarCaixa.resx">
       <DependentUpon>criarCaixa.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editarEstoque.resx">
+      <DependentUpon>editarEstoque.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="menuInicial.resx">
       <DependentUpon>menuInicial.h</DependentUpon>
     </EmbeddedResource>

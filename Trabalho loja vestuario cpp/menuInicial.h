@@ -1,6 +1,7 @@
 #pragma once
 #include "telaVendas.h"
 #include "telaCarrinho.h"
+#include "editarEstoque.h"
 
 namespace Trabalholojavestuariocpp {
 
@@ -84,7 +85,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_comprar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_comprar->Location = System::Drawing::Point(265, 382);
-			this->btn_comprar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_comprar->Margin = System::Windows::Forms::Padding(4);
 			this->btn_comprar->Name = L"btn_comprar";
 			this->btn_comprar->Size = System::Drawing::Size(252, 100);
 			this->btn_comprar->TabIndex = 1;
@@ -97,19 +98,20 @@ namespace Trabalholojavestuariocpp {
 			this->btn_gerenciar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_gerenciar->Location = System::Drawing::Point(16, 15);
-			this->btn_gerenciar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_gerenciar->Margin = System::Windows::Forms::Padding(4);
 			this->btn_gerenciar->Name = L"btn_gerenciar";
 			this->btn_gerenciar->Size = System::Drawing::Size(145, 64);
 			this->btn_gerenciar->TabIndex = 2;
 			this->btn_gerenciar->Text = L"Gerenciar Estoque";
 			this->btn_gerenciar->UseVisualStyleBackColor = true;
+			this->btn_gerenciar->Click += gcnew System::EventHandler(this, &menuInicial::btn_gerenciar_Click);
 			// 
 			// btn_relatorio
 			// 
 			this->btn_relatorio->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btn_relatorio->Location = System::Drawing::Point(169, 15);
-			this->btn_relatorio->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btn_relatorio->Margin = System::Windows::Forms::Padding(4);
 			this->btn_relatorio->Name = L"btn_relatorio";
 			this->btn_relatorio->Size = System::Drawing::Size(145, 64);
 			this->btn_relatorio->TabIndex = 3;
@@ -126,7 +128,7 @@ namespace Trabalholojavestuariocpp {
 			this->Controls->Add(this->btn_gerenciar);
 			this->Controls->Add(this->btn_comprar);
 			this->Controls->Add(this->lbl_titulo);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"menuInicial";
 			this->Text = L"Menu";
 			this->ResumeLayout(false);
@@ -142,6 +144,10 @@ namespace Trabalholojavestuariocpp {
 		editarCarrinho^ novaTela = gcnew editarCarrinho();
 		novaTela->ShowDialog();
 	}
-	};
+	private: System::Void btn_gerenciar_Click(System::Object^ sender, System::EventArgs^ e) {
+		editarEstoque^ novaTela = gcnew editarEstoque();
+		novaTela->ShowDialog();
+	}
+};
 }
 
