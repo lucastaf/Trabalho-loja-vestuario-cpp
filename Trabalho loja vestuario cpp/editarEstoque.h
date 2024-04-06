@@ -51,11 +51,15 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::Button^ btn_aumentarEstoque;
 	private: System::Windows::Forms::Button^ btn_diminuirEstoque;
 	private: System::Windows::Forms::Button^ btn_adicionarProduto;
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Itens;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+
+
+
+
+
 
 	protected:
 
@@ -63,7 +67,7 @@ namespace Trabalholojavestuariocpp {
 		/// <summary>
 		/// Variável de designer necessária.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -74,10 +78,6 @@ namespace Trabalholojavestuariocpp {
 		{
 			this->lbl_controleEstoque = (gcnew System::Windows::Forms::Label());
 			this->dataGrid_estoque = (gcnew System::Windows::Forms::DataGridView());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txt_codigo = (gcnew System::Windows::Forms::TextBox());
 			this->txt_produto = (gcnew System::Windows::Forms::TextBox());
 			this->txt_preco = (gcnew System::Windows::Forms::TextBox());
@@ -89,6 +89,10 @@ namespace Trabalholojavestuariocpp {
 			this->btn_aumentarEstoque = (gcnew System::Windows::Forms::Button());
 			this->btn_diminuirEstoque = (gcnew System::Windows::Forms::Button());
 			this->btn_adicionarProduto = (gcnew System::Windows::Forms::Button());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -124,43 +128,10 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->Name = L"dataGrid_estoque";
 			this->dataGrid_estoque->ReadOnly = true;
 			this->dataGrid_estoque->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
-			this->dataGrid_estoque->RowHeadersWidth = 51;
+			this->dataGrid_estoque->RowHeadersWidth = 4;
 			this->dataGrid_estoque->RowTemplate->Height = 24;
 			this->dataGrid_estoque->Size = System::Drawing::Size(556, 335);
 			this->dataGrid_estoque->TabIndex = 2;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Código";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 125;
-			// 
-			// Itens
-			// 
-			this->Itens->FillWeight = 180;
-			this->Itens->HeaderText = L"Produtos";
-			this->Itens->MinimumWidth = 12;
-			this->Itens->Name = L"Itens";
-			this->Itens->ReadOnly = true;
-			this->Itens->Width = 130;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Preço";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Estoque";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 125;
 			// 
 			// txt_codigo
 			// 
@@ -253,6 +224,39 @@ namespace Trabalholojavestuariocpp {
 			this->btn_adicionarProduto->Text = L"Adicionar";
 			this->btn_adicionarProduto->UseVisualStyleBackColor = true;
 			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Código";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 75;
+			// 
+			// Itens
+			// 
+			this->Itens->FillWeight = 180;
+			this->Itens->HeaderText = L"Produtos";
+			this->Itens->MinimumWidth = 12;
+			this->Itens->Name = L"Itens";
+			this->Itens->ReadOnly = true;
+			this->Itens->Width = 130;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Preço";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Estoque";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 125;
+			// 
 			// editarEstoque
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -277,12 +281,27 @@ namespace Trabalholojavestuariocpp {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"editarEstoque";
 			this->TransparencyKey = System::Drawing::Color::DimGray;
+			this->Load += gcnew System::EventHandler(this, &editarEstoque::editarEstoque_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: void atualizarLista() {
+		this->dataGrid_estoque->Rows->Clear();
+		core::No<core::produto>* aux = Global::produtos.getComeco();
+		for (; aux != nullptr; aux = aux->eloF) {
+			core::produto novoProduto = aux->info;
+			System::String^ dataString = novoProduto.codigo + "," + gcnew System::String(novoProduto.nome.c_str()) + "," + novoProduto.preco + "," + novoProduto.estoque;
+			array<System::String^>^ dataArray = dataString->Split(',');
 
-};
-}
+			this->dataGrid_estoque->Rows->Add(dataArray);
+
+		};
+	}
+	private: System::Void editarEstoque_Load(System::Object ^ sender, System::EventArgs ^ e) {
+		this->atualizarLista();
+	}
+	};
+	}
