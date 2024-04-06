@@ -135,7 +135,7 @@ namespace core {
 		void writeFile() {
 			No<produto>* aux = this->getNo(0);
 			std::ofstream fileStream("Estoque.txt");
-			fileStream << "ListaDeProdutosStorage";
+			fileStream << "ListaDeProdutosStorage ";
 			fileStream << this->getLength() << "\n";
 			while (aux != nullptr) {
 				produto novoProduto = aux->info;
@@ -173,6 +173,7 @@ namespace core {
 
 				NovaLista.adicionarProduto(novoProduto);
 			}
+			fileReader.close();
 			this->copy(NovaLista);
 			NovaLista.deleteList();
 

@@ -144,6 +144,7 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
 			this->dataGrid_estoque->RowHeadersWidth = 4;
 			this->dataGrid_estoque->RowTemplate->Height = 24;
+			this->dataGrid_estoque->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGrid_estoque->Size = System::Drawing::Size(556, 335);
 			this->dataGrid_estoque->TabIndex = 2;
 			// 
@@ -224,6 +225,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_aumentarEstoque->TabIndex = 11;
 			this->btn_aumentarEstoque->Text = L"Adicionar";
 			this->btn_aumentarEstoque->UseVisualStyleBackColor = true;
+			this->btn_aumentarEstoque->Click += gcnew System::EventHandler(this, &editarEstoque::btn_aumentarEstoque_Click);
 			// 
 			// btn_diminuirEstoque
 			// 
@@ -233,6 +235,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_diminuirEstoque->TabIndex = 12;
 			this->btn_diminuirEstoque->Text = L"Remover";
 			this->btn_diminuirEstoque->UseVisualStyleBackColor = true;
+			this->btn_diminuirEstoque->Click += gcnew System::EventHandler(this, &editarEstoque::btn_diminuirEstoque_Click);
 			// 
 			// btn_adicionarProduto
 			// 
@@ -247,9 +250,12 @@ namespace Trabalholojavestuariocpp {
 			// txt_codigo
 			// 
 			this->txt_codigo->Location = System::Drawing::Point(652, 125);
+			this->txt_codigo->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, System::Int32::MinValue });
+			this->txt_codigo->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, System::Int32::MinValue });
 			this->txt_codigo->Name = L"txt_codigo";
 			this->txt_codigo->Size = System::Drawing::Size(120, 22);
 			this->txt_codigo->TabIndex = 14;
+			this->txt_codigo->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, System::Int32::MinValue });
 			// 
 			// txt_produto
 			// 
@@ -261,6 +267,7 @@ namespace Trabalholojavestuariocpp {
 			// txt_preco
 			// 
 			this->txt_preco->Location = System::Drawing::Point(652, 300);
+			this->txt_preco->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 0, 0, 0, 0 });
 			this->txt_preco->Name = L"txt_preco";
 			this->txt_preco->Size = System::Drawing::Size(120, 22);
 			this->txt_preco->TabIndex = 15;
@@ -268,6 +275,7 @@ namespace Trabalholojavestuariocpp {
 			// txt_estoque
 			// 
 			this->txt_estoque->Location = System::Drawing::Point(652, 390);
+			this->txt_estoque->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 0, 0, 0, 0 });
 			this->txt_estoque->Name = L"txt_estoque";
 			this->txt_estoque->Size = System::Drawing::Size(120, 22);
 			this->txt_estoque->TabIndex = 16;
@@ -318,6 +326,11 @@ namespace Trabalholojavestuariocpp {
 		}
 #pragma endregion
 	private: void atualizarLista() {
+		int linhaSelecionada = 0;
+		if (this->dataGrid_estoque->SelectedCells->Count > 0) {
+			linhaSelecionada = this->dataGrid_estoque->SelectedCells[0]->OwningRow->Index;
+
+		}
 		this->dataGrid_estoque->Rows->Clear();
 		core::No<core::produto>* aux = Global::produtos.getComeco();
 		for (; aux != nullptr; aux = aux->eloF) {
@@ -328,10 +341,15 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->Rows->Add(dataArray);
 
 		};
+		if (this->dataGrid_estoque->Rows->Count > linhaSelecionada) {
+			this->dataGrid_estoque->Rows[0]->Selected = false;
+			this->dataGrid_estoque->Rows[linhaSelecionada]->Selected = true;
+		}
 		this->txt_codigo->Text = "0";
 		this->txt_produto->Text = "";
 		this->txt_preco->Text = "0";
 		this->txt_estoque->Text = "0";
+		Global::produtos.writeFile();
 	}
 	private: System::Void editarEstoque_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->atualizarLista();
@@ -352,6 +370,10 @@ namespace Trabalholojavestuariocpp {
 
 	}
 	private: System::Void btn_Editar_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		if (this->dataGrid_estoque->SelectedCells->Count <= 0) {
+			return;
+		}
 
 		core::produto novoProduto;
 
@@ -375,6 +397,29 @@ namespace Trabalholojavestuariocpp {
 		};
 		this->atualizarLista();
 
+	}
+	private: System::Void btn_aumentarEstoque_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->dataGrid_estoque->SelectedCells->Count <= 0) {
+			return;
+		}
+		int codigoProdutoSelecionado = Int32::Parse(this->dataGrid_estoque->SelectedCells[0]->OwningRow->Cells[0]->Value->ToString());
+		Global::produtos.reporEstoque(codigoProdutoSelecionado, 1);
+		this->atualizarLista();
+	}
+	private: System::Void btn_diminuirEstoque_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->dataGrid_estoque->SelectedCells->Count <= 0) {
+			return;
+		}
+		int codigoProdutoSelecionado = Int32::Parse(this->dataGrid_estoque->SelectedCells[0]->OwningRow->Cells[0]->Value->ToString());
+		core::produto produtoSelecionado = Global::produtos.procurarItemPorCodigo(codigoProdutoSelecionado);
+		if (produtoSelecionado.estoque <= 0) {
+			Global::produtos.removerItem(codigoProdutoSelecionado);
+		}
+		else {
+
+			Global::produtos.consumirEstoque(codigoProdutoSelecionado, 1);
+		}
+		this->atualizarLista();
 	}
 	};
 }
