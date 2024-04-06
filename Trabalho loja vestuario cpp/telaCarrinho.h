@@ -1,5 +1,6 @@
 #pragma once
 #include "global.h"
+#include "criarCaixa.h"
 
 namespace Trabalholojavestuariocpp {
 
@@ -114,7 +115,7 @@ namespace Trabalholojavestuariocpp {
 			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(11, 7);
+			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(137, 29);
@@ -146,7 +147,6 @@ namespace Trabalholojavestuariocpp {
 			this->dataGridEstoque->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridEstoque->Size = System::Drawing::Size(391, 206);
 			this->dataGridEstoque->TabIndex = 1;
-			this->dataGridEstoque->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &editarCarrinho::dataGridView1_CellContentClick);
 			// 
 			// Codigo
 			// 
@@ -189,6 +189,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_finalizar->TabIndex = 2;
 			this->btn_finalizar->Text = L"Finalizar Pedido";
 			this->btn_finalizar->UseVisualStyleBackColor = true;
+			this->btn_finalizar->Click += gcnew System::EventHandler(this, &editarCarrinho::btn_finalizar_Click);
 			// 
 			// btn_adicionar
 			// 
@@ -210,6 +211,7 @@ namespace Trabalholojavestuariocpp {
 			this->btn_remover->TabIndex = 5;
 			this->btn_remover->Text = L"Remover Item";
 			this->btn_remover->UseVisualStyleBackColor = true;
+			this->btn_remover->Click += gcnew System::EventHandler(this, &editarCarrinho::btn_remover_Click);
 			// 
 			// label2
 			// 
@@ -321,6 +323,15 @@ namespace Trabalholojavestuariocpp {
 		core::ListaProdutos* Produtos = new core::ListaProdutos;
 
 	private: void atualizarLista() {
+		int estoqueSelecionado = 0;
+		int carrinhoSelecionado = 0;
+		if (this->dataGridEstoque->SelectedCells->Count > 0) {
+			estoqueSelecionado = this->dataGridEstoque->SelectedCells[0]->OwningRow->Index;
+		}
+		if (this->dataGridCarrinho->SelectedCells->Count > 0) {
+			carrinhoSelecionado = this->dataGridCarrinho->SelectedCells[0]->OwningRow->Index;
+		}
+
 		this->dataGridEstoque->Rows->Clear();
 		this->dataGridCarrinho->Rows->Clear();
 
@@ -343,24 +354,63 @@ namespace Trabalholojavestuariocpp {
 			this->dataGridCarrinho->Rows->Add(dataArray);
 
 		};
-	}
-	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+		if (this->dataGridEstoque->Rows->Count > estoqueSelecionado) {
+			this->dataGridEstoque->Rows[0]->Selected = false;
+			this->dataGridEstoque->Rows[estoqueSelecionado]->Selected = true;
+		}
+		if (this->dataGridCarrinho->Rows->Count > carrinhoSelecionado) {
+			this->dataGridCarrinho->Rows[0]->Selected = false;
+			this->dataGridCarrinho->Rows[carrinhoSelecionado]->Selected = true;
+		}
 	}
 
 	private: System::Void btn_adicionar_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->dataGridEstoque->SelectedCells->Count <= 0) {
+			return;
+		}
+
 		DataGridViewRow^ linhaSelecionada = this->dataGridEstoque->SelectedCells[0]->OwningRow;
 
 		int codigoDoProduto = Int32::Parse(linhaSelecionada->Cells[0]->Value->ToString());
 
-		this->Produtos->consumirEstoque(codigoDoProduto, 1);
+		int produtoFoiConsumido = this->Produtos->consumirEstoque(codigoDoProduto, 1);
 
-		core::produto novoProduto = this->Produtos->procurarItemPorCodigo(codigoDoProduto);
-
-		novoProduto.estoque = 1;
-
-		Global::carrinho.adicionarProduto(novoProduto);
+		if (produtoFoiConsumido == 0) {
+			core::produto novoProduto = this->Produtos->procurarItemPorCodigo(codigoDoProduto);
+			novoProduto.estoque = 1;
+			Global::carrinho.adicionarProduto(novoProduto);
+		}
 
 		this->atualizarLista();
+	}
+
+	private: System::Void btn_remover_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->dataGridCarrinho->SelectedCells->Count <= 0) {
+			return;
+		}
+
+
+		DataGridViewRow^ linhaSelecionada = this->dataGridCarrinho->SelectedCells[0]->OwningRow;
+
+		int codigoDoProduto = Int32::Parse(linhaSelecionada->Cells[0]->Value->ToString());
+
+		Global::carrinho.consumirEstoque(codigoDoProduto, 1);
+
+		core::produto novoProduto = Global::carrinho.procurarItemPorCodigo(codigoDoProduto);
+		int quantidadeNoCarrinho = novoProduto.estoque;
+		novoProduto.estoque = 1;
+		this->Produtos->adicionarProduto(novoProduto);
+
+		if (quantidadeNoCarrinho == 0) {
+			Global::carrinho.removerItem(codigoDoProduto);
+		}
+
+		this->atualizarLista();
+	}
+	private: System::Void btn_finalizar_Click(System::Object^ sender, System::EventArgs^ e) {
+		criarCaixa^ novaTela = gcnew criarCaixa;
+		novaTela->ShowDialog();
 	}
 };
 }

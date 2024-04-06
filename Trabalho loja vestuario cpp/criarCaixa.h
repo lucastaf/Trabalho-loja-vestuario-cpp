@@ -1,3 +1,5 @@
+#include "global.h"
+
 #pragma once
 
 namespace Trabalholojavestuariocpp {
@@ -73,13 +75,13 @@ namespace Trabalholojavestuariocpp {
 		{
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->btn_formapagamento = (gcnew System::Windows::Forms::ComboBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->codigo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->produto = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->quantidade = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->valor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->btn_formapagamento = (gcnew System::Windows::Forms::ComboBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -104,42 +106,14 @@ namespace Trabalholojavestuariocpp {
 			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->GridColor = System::Drawing::SystemColors::Control;
-			this->dataGridView1->Location = System::Drawing::Point(12, 133);
+			this->dataGridView1->Location = System::Drawing::Point(213, 103);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
 			this->dataGridView1->RowHeadersWidth = 51;
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(452, 297);
+			this->dataGridView1->Size = System::Drawing::Size(339, 241);
 			this->dataGridView1->TabIndex = 0;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(414, 44);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(162, 32);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"Caixa Aberto";
-			// 
-			// btn_formapagamento
-			// 
-			this->btn_formapagamento->FormattingEnabled = true;
-			this->btn_formapagamento->Location = System::Drawing::Point(636, 513);
-			this->btn_formapagamento->Name = L"btn_formapagamento";
-			this->btn_formapagamento->Size = System::Drawing::Size(156, 24);
-			this->btn_formapagamento->TabIndex = 2;
-			this->btn_formapagamento->SelectedIndexChanged += gcnew System::EventHandler(this, &criarCaixa::comboBox1_SelectedIndexChanged);
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(815, 513);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(160, 24);
-			this->button1->TabIndex = 3;
-			this->button1->Text = L"Finalizar Compra";
-			this->button1->UseVisualStyleBackColor = true;
 			// 
 			// codigo
 			// 
@@ -169,15 +143,48 @@ namespace Trabalholojavestuariocpp {
 			this->valor->Name = L"valor";
 			this->valor->Width = 60;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(310, 36);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(134, 27);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"Caixa Aberto";
+			// 
+			// btn_formapagamento
+			// 
+			this->btn_formapagamento->FormattingEnabled = true;
+			this->btn_formapagamento->Location = System::Drawing::Point(477, 417);
+			this->btn_formapagamento->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btn_formapagamento->Name = L"btn_formapagamento";
+			this->btn_formapagamento->Size = System::Drawing::Size(118, 21);
+			this->btn_formapagamento->TabIndex = 2;
+			this->btn_formapagamento->SelectedIndexChanged += gcnew System::EventHandler(this, &criarCaixa::comboBox1_SelectedIndexChanged);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(611, 417);
+			this->button1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(120, 20);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Finalizar Compra";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
 			// criarCaixa
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1006, 562);
+			this->ClientSize = System::Drawing::Size(754, 457);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->btn_formapagamento);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"criarCaixa";
 			this->Text = L"Caixa";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -186,6 +193,8 @@ namespace Trabalholojavestuariocpp {
 
 		}
 #pragma endregion
+
+
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	};
