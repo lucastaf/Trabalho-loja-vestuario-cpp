@@ -1,4 +1,6 @@
 #pragma once
+#include <msclr\marshal_cppstd.h>
+
 
 namespace Trabalholojavestuariocpp {
 
@@ -36,10 +38,10 @@ namespace Trabalholojavestuariocpp {
 		}
 	private: System::Windows::Forms::Label^ lbl_controleEstoque;
 	private: System::Windows::Forms::DataGridView^ dataGrid_estoque;
-	private: System::Windows::Forms::TextBox^ txt_codigo;
-	private: System::Windows::Forms::TextBox^ txt_produto;
-	private: System::Windows::Forms::TextBox^ txt_preco;
-	private: System::Windows::Forms::TextBox^ txt_estoque;
+
+
+
+
 	protected:
 
 	protected:
@@ -55,6 +57,14 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Itens;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::NumericUpDown^ txt_codigo;
+
+	private: System::Windows::Forms::TextBox^ txt_produto;
+	private: System::Windows::Forms::NumericUpDown^ txt_preco;
+	private: System::Windows::Forms::NumericUpDown^ txt_estoque;
+	private: System::Windows::Forms::Button^ btn_Editar;
+
+
 
 
 
@@ -78,10 +88,10 @@ namespace Trabalholojavestuariocpp {
 		{
 			this->lbl_controleEstoque = (gcnew System::Windows::Forms::Label());
 			this->dataGrid_estoque = (gcnew System::Windows::Forms::DataGridView());
-			this->txt_codigo = (gcnew System::Windows::Forms::TextBox());
-			this->txt_produto = (gcnew System::Windows::Forms::TextBox());
-			this->txt_preco = (gcnew System::Windows::Forms::TextBox());
-			this->txt_estoque = (gcnew System::Windows::Forms::TextBox());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lbl_codigo = (gcnew System::Windows::Forms::Label());
 			this->lbl_produtos = (gcnew System::Windows::Forms::Label());
 			this->lbl_preco = (gcnew System::Windows::Forms::Label());
@@ -89,11 +99,15 @@ namespace Trabalholojavestuariocpp {
 			this->btn_aumentarEstoque = (gcnew System::Windows::Forms::Button());
 			this->btn_diminuirEstoque = (gcnew System::Windows::Forms::Button());
 			this->btn_adicionarProduto = (gcnew System::Windows::Forms::Button());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->txt_codigo = (gcnew System::Windows::Forms::NumericUpDown());
+			this->txt_produto = (gcnew System::Windows::Forms::TextBox());
+			this->txt_preco = (gcnew System::Windows::Forms::NumericUpDown());
+			this->txt_estoque = (gcnew System::Windows::Forms::NumericUpDown());
+			this->btn_Editar = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_codigo))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_preco))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_estoque))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// lbl_controleEstoque
@@ -133,97 +147,6 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->Size = System::Drawing::Size(556, 335);
 			this->dataGrid_estoque->TabIndex = 2;
 			// 
-			// txt_codigo
-			// 
-			this->txt_codigo->Location = System::Drawing::Point(672, 96);
-			this->txt_codigo->Name = L"txt_codigo";
-			this->txt_codigo->Size = System::Drawing::Size(100, 22);
-			this->txt_codigo->TabIndex = 3;
-			// 
-			// txt_produto
-			// 
-			this->txt_produto->Location = System::Drawing::Point(672, 189);
-			this->txt_produto->Name = L"txt_produto";
-			this->txt_produto->Size = System::Drawing::Size(100, 22);
-			this->txt_produto->TabIndex = 4;
-			// 
-			// txt_preco
-			// 
-			this->txt_preco->Location = System::Drawing::Point(672, 280);
-			this->txt_preco->Name = L"txt_preco";
-			this->txt_preco->Size = System::Drawing::Size(100, 22);
-			this->txt_preco->TabIndex = 5;
-			// 
-			// txt_estoque
-			// 
-			this->txt_estoque->Location = System::Drawing::Point(672, 373);
-			this->txt_estoque->Name = L"txt_estoque";
-			this->txt_estoque->Size = System::Drawing::Size(100, 22);
-			this->txt_estoque->TabIndex = 6;
-			// 
-			// lbl_codigo
-			// 
-			this->lbl_codigo->AutoSize = true;
-			this->lbl_codigo->Location = System::Drawing::Point(672, 77);
-			this->lbl_codigo->Name = L"lbl_codigo";
-			this->lbl_codigo->Size = System::Drawing::Size(51, 16);
-			this->lbl_codigo->TabIndex = 7;
-			this->lbl_codigo->Text = L"Código";
-			// 
-			// lbl_produtos
-			// 
-			this->lbl_produtos->AutoSize = true;
-			this->lbl_produtos->Location = System::Drawing::Point(672, 170);
-			this->lbl_produtos->Name = L"lbl_produtos";
-			this->lbl_produtos->Size = System::Drawing::Size(61, 16);
-			this->lbl_produtos->TabIndex = 8;
-			this->lbl_produtos->Text = L"Produtos";
-			// 
-			// lbl_preco
-			// 
-			this->lbl_preco->AutoSize = true;
-			this->lbl_preco->Location = System::Drawing::Point(672, 261);
-			this->lbl_preco->Name = L"lbl_preco";
-			this->lbl_preco->Size = System::Drawing::Size(43, 16);
-			this->lbl_preco->TabIndex = 9;
-			this->lbl_preco->Text = L"Preço";
-			// 
-			// lbl_estoque
-			// 
-			this->lbl_estoque->AutoSize = true;
-			this->lbl_estoque->Location = System::Drawing::Point(672, 354);
-			this->lbl_estoque->Name = L"lbl_estoque";
-			this->lbl_estoque->Size = System::Drawing::Size(57, 16);
-			this->lbl_estoque->TabIndex = 10;
-			this->lbl_estoque->Text = L"Estoque";
-			// 
-			// btn_aumentarEstoque
-			// 
-			this->btn_aumentarEstoque->Location = System::Drawing::Point(77, 466);
-			this->btn_aumentarEstoque->Name = L"btn_aumentarEstoque";
-			this->btn_aumentarEstoque->Size = System::Drawing::Size(94, 27);
-			this->btn_aumentarEstoque->TabIndex = 11;
-			this->btn_aumentarEstoque->Text = L"Adicionar";
-			this->btn_aumentarEstoque->UseVisualStyleBackColor = true;
-			// 
-			// btn_diminuirEstoque
-			// 
-			this->btn_diminuirEstoque->Location = System::Drawing::Point(177, 466);
-			this->btn_diminuirEstoque->Name = L"btn_diminuirEstoque";
-			this->btn_diminuirEstoque->Size = System::Drawing::Size(94, 27);
-			this->btn_diminuirEstoque->TabIndex = 12;
-			this->btn_diminuirEstoque->Text = L"Remover";
-			this->btn_diminuirEstoque->UseVisualStyleBackColor = true;
-			// 
-			// btn_adicionarProduto
-			// 
-			this->btn_adicionarProduto->Location = System::Drawing::Point(672, 464);
-			this->btn_adicionarProduto->Name = L"btn_adicionarProduto";
-			this->btn_adicionarProduto->Size = System::Drawing::Size(100, 26);
-			this->btn_adicionarProduto->TabIndex = 13;
-			this->btn_adicionarProduto->Text = L"Adicionar";
-			this->btn_adicionarProduto->UseVisualStyleBackColor = true;
-			// 
 			// Column3
 			// 
 			this->Column3->HeaderText = L"Código";
@@ -257,12 +180,118 @@ namespace Trabalholojavestuariocpp {
 			this->Column2->ReadOnly = true;
 			this->Column2->Width = 125;
 			// 
+			// lbl_codigo
+			// 
+			this->lbl_codigo->AutoSize = true;
+			this->lbl_codigo->Location = System::Drawing::Point(652, 106);
+			this->lbl_codigo->Name = L"lbl_codigo";
+			this->lbl_codigo->Size = System::Drawing::Size(51, 16);
+			this->lbl_codigo->TabIndex = 7;
+			this->lbl_codigo->Text = L"Código";
+			// 
+			// lbl_produtos
+			// 
+			this->lbl_produtos->AutoSize = true;
+			this->lbl_produtos->Location = System::Drawing::Point(652, 192);
+			this->lbl_produtos->Name = L"lbl_produtos";
+			this->lbl_produtos->Size = System::Drawing::Size(61, 16);
+			this->lbl_produtos->TabIndex = 8;
+			this->lbl_produtos->Text = L"Produtos";
+			// 
+			// lbl_preco
+			// 
+			this->lbl_preco->AutoSize = true;
+			this->lbl_preco->Location = System::Drawing::Point(652, 281);
+			this->lbl_preco->Name = L"lbl_preco";
+			this->lbl_preco->Size = System::Drawing::Size(43, 16);
+			this->lbl_preco->TabIndex = 9;
+			this->lbl_preco->Text = L"Preço";
+			// 
+			// lbl_estoque
+			// 
+			this->lbl_estoque->AutoSize = true;
+			this->lbl_estoque->Location = System::Drawing::Point(652, 371);
+			this->lbl_estoque->Name = L"lbl_estoque";
+			this->lbl_estoque->Size = System::Drawing::Size(57, 16);
+			this->lbl_estoque->TabIndex = 10;
+			this->lbl_estoque->Text = L"Estoque";
+			// 
+			// btn_aumentarEstoque
+			// 
+			this->btn_aumentarEstoque->Location = System::Drawing::Point(77, 466);
+			this->btn_aumentarEstoque->Name = L"btn_aumentarEstoque";
+			this->btn_aumentarEstoque->Size = System::Drawing::Size(94, 27);
+			this->btn_aumentarEstoque->TabIndex = 11;
+			this->btn_aumentarEstoque->Text = L"Adicionar";
+			this->btn_aumentarEstoque->UseVisualStyleBackColor = true;
+			// 
+			// btn_diminuirEstoque
+			// 
+			this->btn_diminuirEstoque->Location = System::Drawing::Point(177, 466);
+			this->btn_diminuirEstoque->Name = L"btn_diminuirEstoque";
+			this->btn_diminuirEstoque->Size = System::Drawing::Size(94, 27);
+			this->btn_diminuirEstoque->TabIndex = 12;
+			this->btn_diminuirEstoque->Text = L"Remover";
+			this->btn_diminuirEstoque->UseVisualStyleBackColor = true;
+			// 
+			// btn_adicionarProduto
+			// 
+			this->btn_adicionarProduto->Location = System::Drawing::Point(652, 464);
+			this->btn_adicionarProduto->Name = L"btn_adicionarProduto";
+			this->btn_adicionarProduto->Size = System::Drawing::Size(100, 26);
+			this->btn_adicionarProduto->TabIndex = 13;
+			this->btn_adicionarProduto->Text = L"Adicionar";
+			this->btn_adicionarProduto->UseVisualStyleBackColor = true;
+			this->btn_adicionarProduto->Click += gcnew System::EventHandler(this, &editarEstoque::btn_adicionarProduto_Click);
+			// 
+			// txt_codigo
+			// 
+			this->txt_codigo->Location = System::Drawing::Point(652, 125);
+			this->txt_codigo->Name = L"txt_codigo";
+			this->txt_codigo->Size = System::Drawing::Size(120, 22);
+			this->txt_codigo->TabIndex = 14;
+			// 
+			// txt_produto
+			// 
+			this->txt_produto->Location = System::Drawing::Point(652, 211);
+			this->txt_produto->Name = L"txt_produto";
+			this->txt_produto->Size = System::Drawing::Size(120, 22);
+			this->txt_produto->TabIndex = 4;
+			// 
+			// txt_preco
+			// 
+			this->txt_preco->Location = System::Drawing::Point(652, 300);
+			this->txt_preco->Name = L"txt_preco";
+			this->txt_preco->Size = System::Drawing::Size(120, 22);
+			this->txt_preco->TabIndex = 15;
+			// 
+			// txt_estoque
+			// 
+			this->txt_estoque->Location = System::Drawing::Point(652, 390);
+			this->txt_estoque->Name = L"txt_estoque";
+			this->txt_estoque->Size = System::Drawing::Size(120, 22);
+			this->txt_estoque->TabIndex = 16;
+			// 
+			// btn_Editar
+			// 
+			this->btn_Editar->Location = System::Drawing::Point(652, 496);
+			this->btn_Editar->Name = L"btn_Editar";
+			this->btn_Editar->Size = System::Drawing::Size(100, 26);
+			this->btn_Editar->TabIndex = 17;
+			this->btn_Editar->Text = L"Editar";
+			this->btn_Editar->UseVisualStyleBackColor = true;
+			this->btn_Editar->Click += gcnew System::EventHandler(this, &editarEstoque::btn_Editar_Click);
+			// 
 			// editarEstoque
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
 			this->ClientSize = System::Drawing::Size(811, 567);
+			this->Controls->Add(this->btn_Editar);
+			this->Controls->Add(this->txt_estoque);
+			this->Controls->Add(this->txt_preco);
+			this->Controls->Add(this->txt_codigo);
 			this->Controls->Add(this->btn_adicionarProduto);
 			this->Controls->Add(this->btn_diminuirEstoque);
 			this->Controls->Add(this->btn_aumentarEstoque);
@@ -270,10 +299,7 @@ namespace Trabalholojavestuariocpp {
 			this->Controls->Add(this->lbl_preco);
 			this->Controls->Add(this->lbl_produtos);
 			this->Controls->Add(this->lbl_codigo);
-			this->Controls->Add(this->txt_estoque);
-			this->Controls->Add(this->txt_preco);
 			this->Controls->Add(this->txt_produto);
-			this->Controls->Add(this->txt_codigo);
 			this->Controls->Add(this->dataGrid_estoque);
 			this->Controls->Add(this->lbl_controleEstoque);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -283,6 +309,9 @@ namespace Trabalholojavestuariocpp {
 			this->TransparencyKey = System::Drawing::Color::DimGray;
 			this->Load += gcnew System::EventHandler(this, &editarEstoque::editarEstoque_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_codigo))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_preco))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_estoque))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -299,9 +328,53 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->Rows->Add(dataArray);
 
 		};
+		this->txt_codigo->Text = "0";
+		this->txt_produto->Text = "";
+		this->txt_preco->Text = "0";
+		this->txt_estoque->Text = "0";
 	}
-	private: System::Void editarEstoque_Load(System::Object ^ sender, System::EventArgs ^ e) {
+	private: System::Void editarEstoque_Load(System::Object^ sender, System::EventArgs^ e) {
 		this->atualizarLista();
 	}
-	};
+	private: System::Void btn_adicionarProduto_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (this->txt_codigo->Text == "" || this->txt_produto->Text == "" || this->txt_preco->Text == "" || this->txt_estoque->Text == "") {
+			return;
+		}
+
+
+		core::produto novoProduto;
+		novoProduto.codigo = Int32::Parse(this->txt_codigo->Text);
+		novoProduto.nome = msclr::interop::marshal_as<std::string>(this->txt_produto->Text);
+		novoProduto.preco = Int32::Parse(this->txt_preco->Text);
+		novoProduto.estoque = Int32::Parse(this->txt_estoque->Text);
+		Global::produtos.adicionarProduto(novoProduto);
+		this->atualizarLista();
+
 	}
+	private: System::Void btn_Editar_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		core::produto novoProduto;
+
+		int codigoProdutoSelecionado = Int32::Parse(this->dataGrid_estoque->SelectedCells[0]->OwningRow->Cells[0]->Value->ToString());
+		core::No<core::produto>* aux = Global::produtos.getComeco();
+		for (;aux != nullptr;aux = aux->eloF) {
+			if (aux->info.codigo == codigoProdutoSelecionado) {
+				if (this->txt_produto->Text != "") {
+					novoProduto.nome = msclr::interop::marshal_as<std::string>(this->txt_produto->Text);
+					aux->info.nome = novoProduto.nome;
+				}
+				if (this->txt_preco->Text != "0") {
+					novoProduto.preco = Int32::Parse(this->txt_preco->Text);
+					aux->info.preco = novoProduto.preco;
+				}
+				if (this->txt_estoque->Text != "0") {
+					novoProduto.estoque = Int32::Parse(this->txt_estoque->Text);
+					aux->info.estoque = novoProduto.estoque;
+				}
+			}
+		};
+		this->atualizarLista();
+
+	}
+	};
+}
