@@ -8,9 +8,9 @@ namespace core {
 		int estoque;
 	};
 }
-namespace core{
+namespace core {
 	//Código : 0 sucesso, -1 nao encontrado, -2 nao permitido
-	class ListaProdutos : protected LDE<produto> {
+	class ListaProdutos : public LDE<produto> {
 		static void readWord(std::ifstream& arquivo, int& out)
 		{
 			std::string temp;
@@ -43,6 +43,10 @@ namespace core{
 		}
 	public:
 		//Get
+		No<produto> *getComeco() {
+			return this->getNo(0);
+		}
+
 		produto procurarItemPorCodigo(int codigo) {
 			int index = this->procurarIndexPorCodigo(codigo);
 			return this->getItem(index);

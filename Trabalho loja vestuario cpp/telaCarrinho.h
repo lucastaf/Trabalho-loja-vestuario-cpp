@@ -1,4 +1,5 @@
 #pragma once
+#include "global.h"
 
 namespace Trabalholojavestuariocpp {
 
@@ -113,9 +114,10 @@ namespace Trabalholojavestuariocpp {
 			this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Comic Sans MS", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(15, 9);
+			this->label1->Location = System::Drawing::Point(11, 7);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(163, 34);
+			this->label1->Size = System::Drawing::Size(137, 29);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Meu Carrinho";
 			// 
@@ -133,8 +135,8 @@ namespace Trabalholojavestuariocpp {
 			});
 			this->dataGridEstoque->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnEnter;
 			this->dataGridEstoque->GridColor = System::Drawing::SystemColors::Control;
-			this->dataGridEstoque->Location = System::Drawing::Point(12, 122);
-			this->dataGridEstoque->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridEstoque->Location = System::Drawing::Point(9, 99);
+			this->dataGridEstoque->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridEstoque->Name = L"dataGridEstoque";
 			this->dataGridEstoque->ReadOnly = true;
 			this->dataGridEstoque->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
@@ -142,7 +144,7 @@ namespace Trabalholojavestuariocpp {
 			this->dataGridEstoque->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dataGridEstoque->RowTemplate->Height = 24;
 			this->dataGridEstoque->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridEstoque->Size = System::Drawing::Size(521, 253);
+			this->dataGridEstoque->Size = System::Drawing::Size(391, 206);
 			this->dataGridEstoque->TabIndex = 1;
 			this->dataGridEstoque->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &editarCarrinho::dataGridView1_CellContentClick);
 			// 
@@ -180,30 +182,31 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// btn_finalizar
 			// 
-			this->btn_finalizar->Location = System::Drawing::Point(859, 457);
-			this->btn_finalizar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_finalizar->Location = System::Drawing::Point(644, 371);
+			this->btn_finalizar->Margin = System::Windows::Forms::Padding(2);
 			this->btn_finalizar->Name = L"btn_finalizar";
-			this->btn_finalizar->Size = System::Drawing::Size(209, 40);
+			this->btn_finalizar->Size = System::Drawing::Size(157, 32);
 			this->btn_finalizar->TabIndex = 2;
 			this->btn_finalizar->Text = L"Finalizar Pedido";
 			this->btn_finalizar->UseVisualStyleBackColor = true;
 			// 
 			// btn_adicionar
 			// 
-			this->btn_adicionar->Location = System::Drawing::Point(12, 379);
-			this->btn_adicionar->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_adicionar->Location = System::Drawing::Point(9, 308);
+			this->btn_adicionar->Margin = System::Windows::Forms::Padding(2);
 			this->btn_adicionar->Name = L"btn_adicionar";
-			this->btn_adicionar->Size = System::Drawing::Size(128, 55);
+			this->btn_adicionar->Size = System::Drawing::Size(96, 45);
 			this->btn_adicionar->TabIndex = 4;
 			this->btn_adicionar->Text = L"Adicionar Item";
 			this->btn_adicionar->UseVisualStyleBackColor = true;
+			this->btn_adicionar->Click += gcnew System::EventHandler(this, &editarCarrinho::btn_adicionar_Click);
 			// 
 			// btn_remover
 			// 
-			this->btn_remover->Location = System::Drawing::Point(940, 379);
-			this->btn_remover->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btn_remover->Location = System::Drawing::Point(705, 308);
+			this->btn_remover->Margin = System::Windows::Forms::Padding(2);
 			this->btn_remover->Name = L"btn_remover";
-			this->btn_remover->Size = System::Drawing::Size(128, 55);
+			this->btn_remover->Size = System::Drawing::Size(96, 45);
 			this->btn_remover->TabIndex = 5;
 			this->btn_remover->Text = L"Remover Item";
 			this->btn_remover->UseVisualStyleBackColor = true;
@@ -211,18 +214,20 @@ namespace Trabalholojavestuariocpp {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 101);
+			this->label2->Location = System::Drawing::Point(9, 82);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(57, 16);
+			this->label2->Size = System::Drawing::Size(46, 13);
 			this->label2->TabIndex = 7;
 			this->label2->Text = L"Estoque";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(544, 101);
+			this->label3->Location = System::Drawing::Point(408, 82);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(86, 16);
+			this->label3->Size = System::Drawing::Size(70, 13);
 			this->label3->TabIndex = 8;
 			this->label3->Text = L"Meu Carrinho";
 			// 
@@ -240,8 +245,8 @@ namespace Trabalholojavestuariocpp {
 			});
 			this->dataGridCarrinho->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnEnter;
 			this->dataGridCarrinho->GridColor = System::Drawing::SystemColors::Control;
-			this->dataGridCarrinho->Location = System::Drawing::Point(547, 122);
-			this->dataGridCarrinho->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dataGridCarrinho->Location = System::Drawing::Point(410, 99);
+			this->dataGridCarrinho->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridCarrinho->Name = L"dataGridCarrinho";
 			this->dataGridCarrinho->ReadOnly = true;
 			this->dataGridCarrinho->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
@@ -249,7 +254,7 @@ namespace Trabalholojavestuariocpp {
 			this->dataGridCarrinho->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dataGridCarrinho->RowTemplate->Height = 24;
 			this->dataGridCarrinho->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridCarrinho->Size = System::Drawing::Size(521, 253);
+			this->dataGridCarrinho->Size = System::Drawing::Size(391, 206);
 			this->dataGridCarrinho->TabIndex = 9;
 			// 
 			// dataGridViewTextBoxColumn1
@@ -286,9 +291,9 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// editarCarrinho
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1080, 508);
+			this->ClientSize = System::Drawing::Size(810, 413);
 			this->Controls->Add(this->dataGridCarrinho);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -297,9 +302,10 @@ namespace Trabalholojavestuariocpp {
 			this->Controls->Add(this->btn_finalizar);
 			this->Controls->Add(this->dataGridEstoque);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"editarCarrinho";
 			this->Text = L"Carrinho";
+			this->Load += gcnew System::EventHandler(this, &editarCarrinho::editarCarrinho_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridEstoque))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridCarrinho))->EndInit();
 			this->ResumeLayout(false);
@@ -307,34 +313,54 @@ namespace Trabalholojavestuariocpp {
 
 		}
 #pragma endregion
+	private: System::Void editarCarrinho_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->Produtos->copy(Global::produtos);
+		this->atualizarLista();
+	}
+	private:
+		core::ListaProdutos* Produtos = new core::ListaProdutos;
+
 	private: void atualizarLista() {
-		this->dataGrid_Vendas->Rows->Clear();
-		if (this->isFiltred) {
-			this->listaFiltrada->copy(Global::vendas.filtrarVendasDeHoje());
-		}
-		else {
-			this->listaFiltrada->copy(Global::vendas);
-		}
-		core::No<core::Venda>* aux = this->listaFiltrada->getComeco();
+		this->dataGridEstoque->Rows->Clear();
+		this->dataGridCarrinho->Rows->Clear();
+
+		core::No<core::produto>* aux = this->Produtos->getComeco();
 		for (; aux != nullptr; aux = aux->eloF) {
-			core::Venda novaVenda = aux->info;
-			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + ", R$" + novaVenda.valor + ", R$" + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
+			core::produto novoProduto = aux->info;
+			System::String^ dataString = novoProduto.codigo + "," + gcnew System::String(novoProduto.nome.c_str()) + "," + novoProduto.preco + "," + novoProduto.estoque;
 			array<System::String^>^ dataArray = dataString->Split(',');
 
-			DataGridViewRow^ novaLinha = gcnew DataGridViewRow();
-			novaLinha->Tag = novaVenda.horario;
-			for each (System::String ^ str in dataArray) {
-				DataGridViewCell^ newCell = gcnew DataGridViewTextBoxCell();
-				newCell->Value = str;
-				novaLinha->Cells->Add(newCell);
-			}
-
-			this->dataGrid_Vendas->Rows->Add(novaLinha);
+			this->dataGridEstoque->Rows->Add(dataArray);
 
 		};
 
+		aux = Global::carrinho.getComeco();
+		for (; aux != nullptr; aux = aux->eloF) {
+			core::produto novoProduto = aux->info;
+			System::String^ dataString = novoProduto.codigo + "," + gcnew System::String(novoProduto.nome.c_str()) + "," + novoProduto.preco + "," + novoProduto.estoque;
+			array<System::String^>^ dataArray = dataString->Split(',');
+
+			this->dataGridCarrinho->Rows->Add(dataArray);
+
+		};
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	}
-	};
+
+	private: System::Void btn_adicionar_Click(System::Object^ sender, System::EventArgs^ e) {
+		DataGridViewRow^ linhaSelecionada = this->dataGridEstoque->SelectedCells[0]->OwningRow;
+
+		int codigoDoProduto = Int32::Parse(linhaSelecionada->Cells[0]->Value->ToString());
+
+		this->Produtos->consumirEstoque(codigoDoProduto, 1);
+
+		core::produto novoProduto = this->Produtos->procurarItemPorCodigo(codigoDoProduto);
+
+		novoProduto.estoque = 1;
+
+		Global::carrinho.adicionarProduto(novoProduto);
+
+		this->atualizarLista();
+	}
+};
 }
