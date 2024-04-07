@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="menuInicial.cpp" />
+    <ClCompile Include="TelaConfirmarTroco.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carrinho.h" />
@@ -139,6 +140,9 @@
     <ClInclude Include="telaCarrinho.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="TelaConfirmarTroco.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="telaVendas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="telaCarrinho.resx">
       <DependentUpon>telaCarrinho.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaConfirmarTroco.resx">
+      <DependentUpon>TelaConfirmarTroco.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="telaVendas.resx">
       <DependentUpon>telaVendas.h</DependentUpon>

@@ -8,12 +8,13 @@ namespace core {
 			No <produto>* aux = this->getNo(0);
 			int count = 0;
 			while (aux != nullptr) {
-				count += aux->info.preco;
+				count += aux->info.preco * aux->info.estoque;
 				aux = aux->eloF;
 			}
 			return count;
 		}
-		float calcularValorComDesconto() {
+
+		int calcularDesconto() {
 			float desconto = 0;
 			int valorTotal = this->calcularValorTotal();
 			int quantidadeProdutos = this->calcularEstoque();
@@ -29,7 +30,15 @@ namespace core {
 			else if (quantidadeProdutos >= 3) {
 				desconto += 10;
 			}
-			return valorTotal * (1 - (desconto / 100));;
+			return desconto;
+		}
+
+		float calcularValorComDesconto() {
+			int valorTotal = this->calcularValorTotal();
+			int desconto = this->calcularDesconto();
+			float valorComDesconto = (float)valorTotal * (1 - (float)desconto / 100);
+			std::cout << valorComDesconto <<" " << desconto << "\n";
+			return valorComDesconto;
 		}
 		Venda criarVenda() {
 			Venda novaVenda;

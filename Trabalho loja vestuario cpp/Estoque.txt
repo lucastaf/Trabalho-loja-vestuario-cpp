@@ -1,2 +1,4 @@
-ListaDeProdutosStorage 1
-100 Blusa-Rosa 20 10
+ListaDeProdutosStorage 3
+100 Blusa-Rosa 4 10
+200 Blusa-Amarela 10 6
+2003 Calça-Jeans 50 10
