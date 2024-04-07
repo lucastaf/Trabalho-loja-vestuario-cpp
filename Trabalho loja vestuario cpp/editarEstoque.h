@@ -53,16 +53,20 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::Button^ btn_aumentarEstoque;
 	private: System::Windows::Forms::Button^ btn_diminuirEstoque;
 	private: System::Windows::Forms::Button^ btn_adicionarProduto;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Itens;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+
+
+
+
 	private: System::Windows::Forms::NumericUpDown^ txt_codigo;
 
 	private: System::Windows::Forms::TextBox^ txt_produto;
 	private: System::Windows::Forms::NumericUpDown^ txt_preco;
 	private: System::Windows::Forms::NumericUpDown^ txt_estoque;
 	private: System::Windows::Forms::Button^ btn_Editar;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Itens;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 
 
 
@@ -88,10 +92,6 @@ namespace Trabalholojavestuariocpp {
 		{
 			this->lbl_controleEstoque = (gcnew System::Windows::Forms::Label());
 			this->dataGrid_estoque = (gcnew System::Windows::Forms::DataGridView());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lbl_codigo = (gcnew System::Windows::Forms::Label());
 			this->lbl_produtos = (gcnew System::Windows::Forms::Label());
 			this->lbl_preco = (gcnew System::Windows::Forms::Label());
@@ -104,6 +104,10 @@ namespace Trabalholojavestuariocpp {
 			this->txt_preco = (gcnew System::Windows::Forms::NumericUpDown());
 			this->txt_estoque = (gcnew System::Windows::Forms::NumericUpDown());
 			this->btn_Editar = (gcnew System::Windows::Forms::Button());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Itens = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_estoque))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_codigo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->txt_preco))->BeginInit();
@@ -150,43 +154,10 @@ namespace Trabalholojavestuariocpp {
 			this->dataGrid_estoque->Size = System::Drawing::Size(417, 272);
 			this->dataGrid_estoque->TabIndex = 2;
 			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Código";
-			this->Column3->MinimumWidth = 6;
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Width = 75;
-			// 
-			// Itens
-			// 
-			this->Itens->FillWeight = 180;
-			this->Itens->HeaderText = L"Produtos";
-			this->Itens->MinimumWidth = 12;
-			this->Itens->Name = L"Itens";
-			this->Itens->ReadOnly = true;
-			this->Itens->Width = 130;
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Preço";
-			this->Column1->MinimumWidth = 6;
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 125;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Estoque";
-			this->Column2->MinimumWidth = 6;
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 125;
-			// 
 			// lbl_codigo
 			// 
 			this->lbl_codigo->AutoSize = true;
-			this->lbl_codigo->Location = System::Drawing::Point(432, 87);
+			this->lbl_codigo->Location = System::Drawing::Point(546, 102);
 			this->lbl_codigo->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lbl_codigo->Name = L"lbl_codigo";
 			this->lbl_codigo->Size = System::Drawing::Size(40, 13);
@@ -196,7 +167,7 @@ namespace Trabalholojavestuariocpp {
 			// lbl_produtos
 			// 
 			this->lbl_produtos->AutoSize = true;
-			this->lbl_produtos->Location = System::Drawing::Point(432, 157);
+			this->lbl_produtos->Location = System::Drawing::Point(537, 172);
 			this->lbl_produtos->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lbl_produtos->Name = L"lbl_produtos";
 			this->lbl_produtos->Size = System::Drawing::Size(49, 13);
@@ -206,7 +177,7 @@ namespace Trabalholojavestuariocpp {
 			// lbl_preco
 			// 
 			this->lbl_preco->AutoSize = true;
-			this->lbl_preco->Location = System::Drawing::Point(432, 229);
+			this->lbl_preco->Location = System::Drawing::Point(551, 244);
 			this->lbl_preco->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lbl_preco->Name = L"lbl_preco";
 			this->lbl_preco->Size = System::Drawing::Size(35, 13);
@@ -216,7 +187,7 @@ namespace Trabalholojavestuariocpp {
 			// lbl_estoque
 			// 
 			this->lbl_estoque->AutoSize = true;
-			this->lbl_estoque->Location = System::Drawing::Point(432, 302);
+			this->lbl_estoque->Location = System::Drawing::Point(540, 317);
 			this->lbl_estoque->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lbl_estoque->Name = L"lbl_estoque";
 			this->lbl_estoque->Size = System::Drawing::Size(46, 13);
@@ -258,37 +229,37 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// txt_codigo
 			// 
-			this->txt_codigo->Location = System::Drawing::Point(432, 103);
+			this->txt_codigo->Location = System::Drawing::Point(467, 118);
 			this->txt_codigo->Margin = System::Windows::Forms::Padding(2);
 			this->txt_codigo->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999, 0, 0, 0 });
 			this->txt_codigo->Name = L"txt_codigo";
-			this->txt_codigo->Size = System::Drawing::Size(90, 20);
+			this->txt_codigo->Size = System::Drawing::Size(119, 20);
 			this->txt_codigo->TabIndex = 14;
 			// 
 			// txt_produto
 			// 
-			this->txt_produto->Location = System::Drawing::Point(432, 172);
+			this->txt_produto->Location = System::Drawing::Point(467, 187);
 			this->txt_produto->Margin = System::Windows::Forms::Padding(2);
 			this->txt_produto->Name = L"txt_produto";
-			this->txt_produto->Size = System::Drawing::Size(91, 20);
+			this->txt_produto->Size = System::Drawing::Size(119, 20);
 			this->txt_produto->TabIndex = 4;
 			// 
 			// txt_preco
 			// 
-			this->txt_preco->Location = System::Drawing::Point(432, 245);
+			this->txt_preco->Location = System::Drawing::Point(467, 260);
 			this->txt_preco->Margin = System::Windows::Forms::Padding(2);
 			this->txt_preco->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999, 0, 0, 0 });
 			this->txt_preco->Name = L"txt_preco";
-			this->txt_preco->Size = System::Drawing::Size(90, 20);
+			this->txt_preco->Size = System::Drawing::Size(119, 20);
 			this->txt_preco->TabIndex = 15;
 			// 
 			// txt_estoque
 			// 
-			this->txt_estoque->Location = System::Drawing::Point(432, 318);
+			this->txt_estoque->Location = System::Drawing::Point(467, 333);
 			this->txt_estoque->Margin = System::Windows::Forms::Padding(2);
 			this->txt_estoque->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999, 0, 0, 0 });
 			this->txt_estoque->Name = L"txt_estoque";
-			this->txt_estoque->Size = System::Drawing::Size(90, 20);
+			this->txt_estoque->Size = System::Drawing::Size(119, 20);
 			this->txt_estoque->TabIndex = 16;
 			// 
 			// btn_Editar
@@ -301,6 +272,37 @@ namespace Trabalholojavestuariocpp {
 			this->btn_Editar->Text = L"Editar Seleção";
 			this->btn_Editar->UseVisualStyleBackColor = true;
 			this->btn_Editar->Click += gcnew System::EventHandler(this, &editarEstoque::btn_Editar_Click);
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Código";
+			this->Column3->MinimumWidth = 6;
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 75;
+			// 
+			// Itens
+			// 
+			this->Itens->FillWeight = 180;
+			this->Itens->HeaderText = L"Produtos";
+			this->Itens->MinimumWidth = 12;
+			this->Itens->Name = L"Itens";
+			this->Itens->ReadOnly = true;
+			this->Itens->Width = 130;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Preço";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Estoque";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
 			// 
 			// editarEstoque
 			// 

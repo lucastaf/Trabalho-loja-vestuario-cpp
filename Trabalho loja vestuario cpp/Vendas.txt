@@ -1,7 +1,8 @@
-ListaDeVendasStorage 6
+ListaDeVendasStorage 7
 1711772830 15 150 40 credito jailson2
 1711893274 10 130 150 credito joana6
 1712457198 4 16 14.4 Cartão-de-Débito Thiago
 1712457972 5 170 136 Dinheiro Marielly
 1712458027 4 16 14.4 PIX Peterson
 1712458142 2 20 20 PIX Peterson
+1712460360 2 8 8 Dinheiro Peterson

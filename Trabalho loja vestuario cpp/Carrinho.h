@@ -37,7 +37,6 @@ namespace core {
 			int valorTotal = this->calcularValorTotal();
 			int desconto = this->calcularDesconto();
 			float valorComDesconto = (float)valorTotal * (1 - (float)desconto / 100);
-			std::cout << valorComDesconto <<" " << desconto << "\n";
 			return valorComDesconto;
 		}
 		Venda criarVenda() {
