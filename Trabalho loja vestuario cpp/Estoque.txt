@@ -1,2 +1,3 @@
-ListaDeProdutosStorage 1
-100 Blusa-Rosa 20 10
+ListaDeProdutosStorage 2
+100 Blusa-Rosa 4 10
+200 Blusa-Amarela 10 8

@@ -1,4 +1,3 @@
-ListaDeVendasStorage 3
+ListaDeVendasStorage 2
 1711772830 15 150 40 credito jailson2
-1711893273 10 120 200 pix jailson5
 1711893274 10 130 150 credito joana6

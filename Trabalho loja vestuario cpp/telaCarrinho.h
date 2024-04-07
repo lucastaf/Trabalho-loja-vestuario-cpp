@@ -307,6 +307,7 @@ namespace Trabalholojavestuariocpp {
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"editarCarrinho";
 			this->Text = L"Carrinho";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &editarCarrinho::editarCarrinho_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &editarCarrinho::editarCarrinho_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridEstoque))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridCarrinho))->EndInit();
@@ -316,6 +317,9 @@ namespace Trabalholojavestuariocpp {
 		}
 #pragma endregion
 	private: System::Void editarCarrinho_Load(System::Object^ sender, System::EventArgs^ e) {
+		Global::confirmEvent objetoEvent;
+		objetoEvent.confirmarCompraEvent += gcnew Global::confirmEvent::confirmarCompraEventHandler(this, &editarCarrinho::vendaConfirmada);
+
 		this->Produtos->copy(Global::produtos);
 		this->atualizarLista();
 	}
@@ -412,5 +416,12 @@ namespace Trabalholojavestuariocpp {
 		criarCaixa^ novaTela = gcnew criarCaixa;
 		novaTela->ShowDialog();
 	}
-};
+	private: void vendaConfirmada() {
+		this->Close();
+	}
+
+	private: System::Void editarCarrinho_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Global::carrinho.deleteList();
+	}
+	};
 }
