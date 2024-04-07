@@ -94,10 +94,9 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// btn_exlcuir
 			// 
-			this->btn_exlcuir->Location = System::Drawing::Point(803, 362);
-			this->btn_exlcuir->Margin = System::Windows::Forms::Padding(4);
+			this->btn_exlcuir->Location = System::Drawing::Point(660, 293);
 			this->btn_exlcuir->Name = L"btn_exlcuir";
-			this->btn_exlcuir->Size = System::Drawing::Size(128, 69);
+			this->btn_exlcuir->Size = System::Drawing::Size(96, 56);
 			this->btn_exlcuir->TabIndex = 0;
 			this->btn_exlcuir->Text = L"Excluir Registro";
 			this->btn_exlcuir->UseVisualStyleBackColor = true;
@@ -112,13 +111,12 @@ namespace Trabalholojavestuariocpp {
 				this->horario,
 					this->quantidadeProd, this->valorTotal, this->valorCobrado, this->formaDePagamento, this->vendedor
 			});
-			this->dataGrid_Vendas->Location = System::Drawing::Point(16, 15);
-			this->dataGrid_Vendas->Margin = System::Windows::Forms::Padding(4);
+			this->dataGrid_Vendas->Location = System::Drawing::Point(12, 12);
 			this->dataGrid_Vendas->Name = L"dataGrid_Vendas";
 			this->dataGrid_Vendas->ReadOnly = true;
 			this->dataGrid_Vendas->RowHeadersWidth = 51;
 			this->dataGrid_Vendas->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGrid_Vendas->Size = System::Drawing::Size(779, 416);
+			this->dataGrid_Vendas->Size = System::Drawing::Size(642, 338);
 			this->dataGrid_Vendas->TabIndex = 1;
 			// 
 			// horario
@@ -174,10 +172,9 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// btn_setFilter
 			// 
-			this->btn_setFilter->Location = System::Drawing::Point(803, 16);
-			this->btn_setFilter->Margin = System::Windows::Forms::Padding(4);
+			this->btn_setFilter->Location = System::Drawing::Point(660, 12);
 			this->btn_setFilter->Name = L"btn_setFilter";
-			this->btn_setFilter->Size = System::Drawing::Size(128, 55);
+			this->btn_setFilter->Size = System::Drawing::Size(96, 45);
 			this->btn_setFilter->TabIndex = 2;
 			this->btn_setFilter->Text = L"Filtrar Hoje";
 			this->btn_setFilter->UseVisualStyleBackColor = true;
@@ -185,13 +182,12 @@ namespace Trabalholojavestuariocpp {
 			// 
 			// telaVendas
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(947, 446);
+			this->ClientSize = System::Drawing::Size(768, 362);
 			this->Controls->Add(this->btn_setFilter);
 			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->btn_exlcuir);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"telaVendas";
 			this->Text = L"Relatorio";
 			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);

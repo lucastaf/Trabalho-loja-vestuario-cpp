@@ -358,19 +358,32 @@ namespace Trabalholojavestuariocpp {
 		this->atualizarLista();
 	}
 	private: System::Void btn_finalizarCompra_Click(System::Object^ sender, System::EventArgs^ e) {
-		TelaConfirmarTroco^ novaTela = gcnew TelaConfirmarTroco();
-		novaTela->ShowDialog();
+		if (this->cbox_formapagamento->Text == "" || this->cbox_vendedor->Text == "") {
+			return;
+		}
+
+		if (this->cbox_formapagamento->Text == "Dinheiro") {
+			TelaConfirmarTroco^ novaTela = gcnew TelaConfirmarTroco();
+			novaTela->ShowDialog();
+		}
+		else {
+			Global::confirmEvent::dispararEvento();
+		}
 
 	}
-		System::Void confirmarCompra() {
-			core::Venda novaVenda;
-			novaVenda.horario = std::time(NULL);
-			novaVenda.valor = Global::carrinho.calcularValorTotal();
-			novaVenda.valorCobrado = Global::carrinho.calcularValorComDesconto();
-			novaVenda.quantProdutos = Global::carrinho.calcularEstoque();
-			novaVenda.vendedor = msclr::interop::marshal_as<std::string>(this->cbox_vendedor->Text);
-			novaVenda.formaDePagamento = msclr::interop::marshal_as<std::string>(this->cbox_formapagamento->Text);
-			Global::vendas.addVenda(novaVenda);
-		}
+		   System::Void confirmarCompra() {
+			   core::Venda novaVenda;
+			   novaVenda.horario = std::time(NULL);
+			   novaVenda.valor = Global::carrinho.calcularValorTotal();
+			   novaVenda.valorCobrado = Global::carrinho.calcularValorComDesconto();
+			   novaVenda.quantProdutos = Global::carrinho.calcularEstoque();
+			   novaVenda.vendedor = msclr::interop::marshal_as<std::string>(this->cbox_vendedor->Text);
+			   novaVenda.formaDePagamento = msclr::interop::marshal_as<std::string>(this->cbox_formapagamento->Text);
+			   Global::vendas.addVenda(novaVenda);
+			   Global::vendas.writeFile();
+			   Global::produtos.consumirListaProdutos((core::ListaProdutos)Global::carrinho);
+			   Global::produtos.writeFile();
+			   this->Close();
+		   }
 	};
 }

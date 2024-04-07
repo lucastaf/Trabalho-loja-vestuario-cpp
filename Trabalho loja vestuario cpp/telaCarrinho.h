@@ -416,12 +416,17 @@ namespace Trabalholojavestuariocpp {
 		criarCaixa^ novaTela = gcnew criarCaixa;
 		novaTela->ShowDialog();
 	}
+	private: bool isVendaConfirmada = false;
+
 	private: void vendaConfirmada() {
+		this->isVendaConfirmada = true;
 		this->Close();
 	}
 
 	private: System::Void editarCarrinho_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
-		Global::carrinho.deleteList();
+		if (!this->isVendaConfirmada) {
+			Global::carrinho.deleteList();
+		}
 	}
 	};
 }

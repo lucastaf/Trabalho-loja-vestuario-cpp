@@ -86,6 +86,7 @@ namespace Trabalholojavestuariocpp {
 			// txt_valor
 			// 
 			this->txt_valor->Location = System::Drawing::Point(16, 29);
+			this->txt_valor->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999, 0, 0, 0 });
 			this->txt_valor->Name = L"txt_valor";
 			this->txt_valor->Size = System::Drawing::Size(196, 20);
 			this->txt_valor->TabIndex = 3;
