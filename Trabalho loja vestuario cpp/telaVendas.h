@@ -53,6 +53,18 @@ namespace Trabalholojavestuariocpp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ valorCobrado;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ formaDePagamento;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ vendedor;
+	private: System::Windows::Forms::Label^ lbl_bruto;
+	private: System::Windows::Forms::Label^ lbl_valorBruto;
+
+
+	private: System::Windows::Forms::Label^ lbl_valorLiquido;
+
+	private: System::Windows::Forms::Label^ lbl_renda;
+
+	private: System::Windows::Forms::Label^ lbl_quantProdutos;
+
+	private: System::Windows::Forms::Label^ lbl_produtosVendidos;
+
 
 
 
@@ -89,6 +101,12 @@ namespace Trabalholojavestuariocpp {
 			this->formaDePagamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->vendedor = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->btn_setFilter = (gcnew System::Windows::Forms::Button());
+			this->lbl_bruto = (gcnew System::Windows::Forms::Label());
+			this->lbl_valorBruto = (gcnew System::Windows::Forms::Label());
+			this->lbl_valorLiquido = (gcnew System::Windows::Forms::Label());
+			this->lbl_renda = (gcnew System::Windows::Forms::Label());
+			this->lbl_quantProdutos = (gcnew System::Windows::Forms::Label());
+			this->lbl_produtosVendidos = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -180,11 +198,71 @@ namespace Trabalholojavestuariocpp {
 			this->btn_setFilter->UseVisualStyleBackColor = true;
 			this->btn_setFilter->Click += gcnew System::EventHandler(this, &telaVendas::btn_setFilter_Click);
 			// 
+			// lbl_bruto
+			// 
+			this->lbl_bruto->AutoSize = true;
+			this->lbl_bruto->Location = System::Drawing::Point(661, 64);
+			this->lbl_bruto->Name = L"lbl_bruto";
+			this->lbl_bruto->Size = System::Drawing::Size(89, 13);
+			this->lbl_bruto->TabIndex = 3;
+			this->lbl_bruto->Text = L"Valor Bruto Total:";
+			// 
+			// lbl_valorBruto
+			// 
+			this->lbl_valorBruto->AutoSize = true;
+			this->lbl_valorBruto->Location = System::Drawing::Point(661, 77);
+			this->lbl_valorBruto->Name = L"lbl_valorBruto";
+			this->lbl_valorBruto->Size = System::Drawing::Size(30, 13);
+			this->lbl_valorBruto->TabIndex = 4;
+			this->lbl_valorBruto->Text = L"R$ 0";
+			// 
+			// lbl_valorLiquido
+			// 
+			this->lbl_valorLiquido->AutoSize = true;
+			this->lbl_valorLiquido->Location = System::Drawing::Point(661, 228);
+			this->lbl_valorLiquido->Name = L"lbl_valorLiquido";
+			this->lbl_valorLiquido->Size = System::Drawing::Size(30, 13);
+			this->lbl_valorLiquido->TabIndex = 6;
+			this->lbl_valorLiquido->Text = L"R$ 0";
+			// 
+			// lbl_renda
+			// 
+			this->lbl_renda->AutoSize = true;
+			this->lbl_renda->Location = System::Drawing::Point(661, 215);
+			this->lbl_renda->Name = L"lbl_renda";
+			this->lbl_renda->Size = System::Drawing::Size(69, 13);
+			this->lbl_renda->TabIndex = 5;
+			this->lbl_renda->Text = L"Renda Total:";
+			// 
+			// lbl_quantProdutos
+			// 
+			this->lbl_quantProdutos->AutoSize = true;
+			this->lbl_quantProdutos->Location = System::Drawing::Point(661, 272);
+			this->lbl_quantProdutos->Name = L"lbl_quantProdutos";
+			this->lbl_quantProdutos->Size = System::Drawing::Size(13, 13);
+			this->lbl_quantProdutos->TabIndex = 8;
+			this->lbl_quantProdutos->Text = L"0";
+			// 
+			// lbl_produtosVendidos
+			// 
+			this->lbl_produtosVendidos->AutoSize = true;
+			this->lbl_produtosVendidos->Location = System::Drawing::Point(661, 259);
+			this->lbl_produtosVendidos->Name = L"lbl_produtosVendidos";
+			this->lbl_produtosVendidos->Size = System::Drawing::Size(99, 13);
+			this->lbl_produtosVendidos->TabIndex = 7;
+			this->lbl_produtosVendidos->Text = L"Produtos Vendidos:";
+			// 
 			// telaVendas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(768, 362);
+			this->Controls->Add(this->lbl_quantProdutos);
+			this->Controls->Add(this->lbl_produtosVendidos);
+			this->Controls->Add(this->lbl_valorLiquido);
+			this->Controls->Add(this->lbl_renda);
+			this->Controls->Add(this->lbl_valorBruto);
+			this->Controls->Add(this->lbl_bruto);
 			this->Controls->Add(this->btn_setFilter);
 			this->Controls->Add(this->dataGrid_Vendas);
 			this->Controls->Add(this->btn_exlcuir);
@@ -193,6 +271,7 @@ namespace Trabalholojavestuariocpp {
 			this->Load += gcnew System::EventHandler(this, &telaVendas::telaVendas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGrid_Vendas))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -223,6 +302,11 @@ namespace Trabalholojavestuariocpp {
 			}
 		
 			this->dataGrid_Vendas->Rows->Add(novaLinha);
+			
+			this->lbl_quantProdutos->Text = "" + this->listaFiltrada->calcularVendasTotais();
+			this->lbl_valorLiquido->Text = "R$ " + this->listaFiltrada->calcularValorCobradoTotal();
+			this->lbl_valorBruto->Text = "R$ " + this->listaFiltrada->calcularValorTotal();
+
 
 		};
 	}
