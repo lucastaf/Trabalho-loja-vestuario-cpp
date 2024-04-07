@@ -114,6 +114,16 @@ public:
 		return total;
 	}
 
+	int calcularVendasTotais() {
+		No <Venda>* aux = this->getNo(0);
+		int total = 0;
+		while (aux != nullptr) {
+			total += aux->info.quantProdutos;
+			aux = aux->eloF;
+		}
+		return total;
+	}
+
 	void writeFile() {
 		No<Venda>* aux = this->getNo(0);
 		std::ofstream fileStream("Vendas.txt");
