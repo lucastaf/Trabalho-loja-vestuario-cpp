@@ -211,8 +211,8 @@ namespace Trabalholojavestuariocpp {
 		core::No<core::Venda>* aux = this->listaFiltrada->getComeco();
 		for (; aux != nullptr; aux = aux->eloF) {
 			core::Venda novaVenda = aux->info;
-			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + "," + novaVenda.quantProdutos + ", R$" + novaVenda.valor + ", R$" + novaVenda.valorCobrado + "," + gcnew System::String(novaVenda.formaDePagamento.c_str()) + "," + gcnew System::String(novaVenda.vendedor.c_str());
-			array<System::String^>^ dataArray = dataString->Split(',');
+			System::String^ dataString = gcnew System::String(novaVenda.formatarData().c_str()) + ";" + novaVenda.quantProdutos + "; R$" + novaVenda.valor + "; R$" + novaVenda.valorCobrado + ";" + gcnew System::String(novaVenda.formaDePagamento.c_str()) + ";" + gcnew System::String(novaVenda.vendedor.c_str());
+			array<System::String^>^ dataArray = dataString->Split(';');
 
 			DataGridViewRow^ novaLinha = gcnew DataGridViewRow();
 			novaLinha->Tag = novaVenda.horario;

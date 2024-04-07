@@ -51,6 +51,7 @@ namespace core {
 			int index = this->procurarIndexPorCodigo(codigo);
 			return this->getItem(index);
 		}
+
 		int calcularValorTotal() {
 			int sum = 0;
 			for (int i = 0; i < this->getLength(); i++) {
@@ -59,6 +60,7 @@ namespace core {
 			}
 			return sum;
 		}
+
 		int calcularEstoque() {
 			No <produto>* aux = this->getNo(0);
 			int count = 0;
